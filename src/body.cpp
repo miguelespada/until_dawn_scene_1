@@ -9,37 +9,26 @@
 #include "body.h"
 #include "assets.h"
 
-
 Body::Body(){
-    video.loadMovie("hombre.mov");
-    video.play();
-    ofAddListener(ofEvents().update, this, &Body::update);
 }
 
-
-void Body::update(ofEventArgs &args){
+void Body::update(){
+    if(!video.isPlaying())
+        video.play();
     video.update();
 }
 
-void Body::draw(int x, int y){
-    ofPushMatrix();
-    
-    ofTranslate(x, y, 0);
-    
-    drawVideo();
-    
-    ofPopMatrix();
-    
+void Body::draw(){
+    if(ofGetWindowWidth() < ofGetWindowHeight())
+        video.draw(0, 0, ofGetWindowWidth(), ofGetWindowHeight());
+    else
+        video.draw(0, 0, ofGetWindowHeight(), ofGetWindowWidth());
 }
 
-void Body::drawVideo(){
-    
-    ofPushStyle();
-    ofTranslate(0, ofGetWindowHeight());
-    cout << ofGetMouseX() << " " << ofGetMouseY() << endl;
-    ofRotate(-90);
-    video.draw(0, 0);
-    
-    ofPopStyle();
-    
+void Body::setMale(bool s){
+    if(s)
+        video = Assets::getInstance()->male_loop;
+    else
+        video = Assets::getInstance()->female_loop;
 }
+

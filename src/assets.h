@@ -10,7 +10,10 @@
 #define __until_dawn_screen_2__assets__
 
 #include "ofMain.h"
-#include "body.h"
+
+#define SCALE 2
+#define W 1920/SCALE
+#define H 1080/SCALE
 
 
 class Assets{
@@ -18,23 +21,15 @@ public:
     static Assets* getInstance();
     void load();
     
-    ofImage fondo;
-    ofImage fondo_full;
-    ofTrueTypeFont		font_32;
-    ofTrueTypeFont		font_30;
-    ofTrueTypeFont		font_28;
-    ofTrueTypeFont		font_20;
-    ofTrueTypeFont		font_14;
-    ofTrueTypeFont		font_12;
-    ofTrueTypeFont		font_10;
+    float getScale();
     
-    Body body;
-    
-    int x, y;
+    ofVideoPlayer male_loop;
+    ofVideoPlayer female_loop;
+    ofVideoPlayer glitches[5];
+    ofVideoPlayer closeups[5];
     
 private:
     static Assets* instance;
-    
     Assets();
 };
 

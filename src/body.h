@@ -14,11 +14,11 @@
 class Body
 {
     ofVideoPlayer video;
-    void update(ofEventArgs &args);
-    void drawVideo();
 public:
     Body();
-    void draw(int x, int y);
+    void draw();
+    void update();
+    void setMale(bool s);
 };
 
 #endif /* defined(__until_dawn_screen_2__temperature__) */
