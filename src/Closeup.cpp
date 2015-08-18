@@ -19,9 +19,8 @@
 Closeup::Closeup(App *a){
     app = a;
     ofLogNotice() << "State: " << toString();
-    int index = app->getCurrentModule();
     
-    switch (index) {
+    switch (app->getCurrentModule()) {
         case 0:
             closeup = new Heart();
             break;
@@ -38,7 +37,6 @@ Closeup::Closeup(App *a){
             closeup = new Pressure();
             break;
         default:
-            closeup = new  Heart();
             break;
     }
 };

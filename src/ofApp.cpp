@@ -7,7 +7,7 @@ void ofApp::setup(){
     
 //    ofSetWindowPosition(0, 0);
 //    ofToggleFullscreen();
-    ofSetFrameRate(12);
+    ofSetFrameRate(30);
     
     assets = Assets::getInstance();
 

@@ -28,6 +28,21 @@ public:
     ofVideoPlayer glitches[5];
     ofVideoPlayer closeups[5];
     
+    ofImage lineas;
+    ofImage logos;
+    ofImage degradado;
+    ofImage ellipse;
+    ofImage icon_heart;
+    ofImage icon_pressure;
+    ofImage icon_optical;
+    ofImage icon_hand;
+    ofImage icon_termal;
+    
+    
+    ofTrueTypeFont		font;
+    
+    void setFont(float size);
+    
 private:
     static Assets* instance;
     Assets();

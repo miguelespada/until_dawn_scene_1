@@ -9,6 +9,8 @@
 #include "App.h"
 #include "heart.h"
 #include "optical.h"
+#include "ofxJSON.h"
+
 
 App::App(){
     // Register events and actions
@@ -52,6 +54,7 @@ void App::update(ofEventArgs &args){
 
 
 void App::keyPressed (ofKeyEventArgs& eventArgs){
+    ofxJSONElement response;
     switch (eventArgs.key) {
         case 'n':
             next();
@@ -61,6 +64,7 @@ void App::keyPressed (ofKeyEventArgs& eventArgs){
             break;
         case 'M':
             bMale = !bMale;
+            response.open("http://localhost:3000/users.json?male=" + ofToString(bMale));
             break;
         default:
             break;
@@ -68,6 +72,14 @@ void App::keyPressed (ofKeyEventArgs& eventArgs){
 }
 
 bool App::isMale(){
+    
+    if(ofGetFrameNum() % 30 == 0){
+        ofxJSONElement response;
+        response.open("http://localhost:3000/users.json");
+        bMale = response[0]["male"].asBool();
+    }
+
+    
     return bMale;
 }
 
