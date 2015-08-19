@@ -15,7 +15,6 @@
 
 class Closeup: public State
 {
-    ofVideoPlayer video;
     
 public:
     Closeup(App *g);

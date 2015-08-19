@@ -10,9 +10,15 @@
 
 Table::Table(){
     assets = Assets::getInstance();
+    
+    top.open("http://localhost:3000/top.json");
 }
 
 void Table::drawTable(){
+    if(ofGetFrameNum() % 60 == 0){
+        top.open("http://localhost:3000/top.json");
+    }
+    
     ofEnableSmoothing();
     
     drawTableHeader();
@@ -25,6 +31,9 @@ void Table::drawTable(){
 }
 
 void Table::drawTableHeader(){
+    
+ 
+    
     ofTrueTypeFont *font = assets->getFont(12);
     float scale = assets->getScale();
     
@@ -57,16 +66,34 @@ void Table::drawTableRow(int r, int y){
     string msg = ofToString(r);
     font->drawString(msg, 85 * scale, y * scale + font->stringHeight(msg) / 2);
     
-    msg = "MIGUEL V. ESPADA";
+    msg = top[r - 1]["name"].asString();
+    
     font->drawString(msg, 164 * scale, y * scale + font->stringHeight(msg) / 2);
     
+    int i;
     
-    for(int i = 0; i < 5; i ++){
-        msg = ofToString("100%");
-        font->drawString(msg, (412 + i * 70) * scale - font->stringWidth(msg)/2, y * scale + font->stringHeight(msg) / 2);
-    }
+    msg = top[r - 1]["heart"].asString() + "%";
+    i = 0;
+    font->drawString(msg, (412 + i * 70) * scale - font->stringWidth(msg)/2, y * scale + font->stringHeight(msg) / 2);
     
-    msg = "99%";
+    msg = top[r - 1]["galvanic"].asString() + "%";
+    i = 1;
+    font->drawString(msg, (412 + i * 70) * scale - font->stringWidth(msg)/2, y * scale + font->stringHeight(msg) / 2);
+    
+    msg = top[r - 1]["pressure"].asString() + "%";
+    i = 2;
+    font->drawString(msg, (412 + i * 70) * scale - font->stringWidth(msg)/2, y * scale + font->stringHeight(msg) / 2);
+    
+    msg = top[r - 1]["optical_flow"].asString() + "%";
+    i = 3;
+    font->drawString(msg, (412 + i * 70) * scale - font->stringWidth(msg)/2, y * scale + font->stringHeight(msg) / 2);
+    
+    msg = top[r - 1]["temperature"].asString() + "%";
+    i = 4;
+    font->drawString(msg, (412 + i * 70) * scale - font->stringWidth(msg)/2, y * scale + font->stringHeight(msg) / 2);
+    
+    
+    msg = top[r - 1]["indice"].asString() + "%";
     font->drawString(msg, 830 * scale, y * scale + font->stringHeight(msg) / 2);
     
     ofSetColor(assets->red);
@@ -77,11 +104,17 @@ void Table::drawTableRow(int r, int y){
     
     
     for(int i = 0; i < 5; i ++){
-        ofSetColor(assets->red);
+        
+        if(top[r - 1]["indice"].asInt() >= i * 20)
+            ofSetColor(assets->red);
+        else
+            ofNoFill();
+        
         ofRect((771 + i * 10) * scale , y * scale - 12 * scale, 6 * scale, 22 * scale);
         ofSetColor(255);
         ofNoFill();
         ofRect((771 + i * 10) * scale , y * scale - 12 * scale, 6 * scale, 22 * scale);
+        ofFill();
     }
     
     

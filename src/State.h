@@ -25,6 +25,8 @@ public:
     virtual void draw() {};
     virtual void update() {};
     virtual void push() {};
+    virtual void end() {};
+    virtual void init() {};
 };
 
 

@@ -11,10 +11,14 @@
 
 #include "ofMain.h"
 #include "assets.h"
+#include "ofxJSON.h"
+
 
 class Table
 {
     Assets *assets;
+    
+    ofxJSONElement top;
     
 public:
     Table();

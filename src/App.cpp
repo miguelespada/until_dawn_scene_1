@@ -50,6 +50,17 @@ void App::update(){
 
 void App::update(ofEventArgs &args){
     update();
+    
+    if(ofGetFrameNum() % 30 == 0){
+        ofxJSONElement response;
+        response.open("http://localhost:3000/last.json");
+        bMale = response["male"].asBool();
+        
+        if(response["active"].asBool())
+            current_state->init();
+        else
+            current_state->end();
+    }
 }
 
 
@@ -62,26 +73,16 @@ void App::keyPressed (ofKeyEventArgs& eventArgs){
         case 'c':
             cancel();
             break;
-        case 'M':
-            bMale = !bMale;
-            response.open("http://localhost:3000/users.json?male=" + ofToString(bMale));
-            break;
         default:
             break;
     }
 }
 
 bool App::isMale(){
-    
-    if(ofGetFrameNum() % 30 == 0){
-        ofxJSONElement response;
-        response.open("http://localhost:3000/users.json");
-        bMale = response[0]["male"].asBool();
-    }
-
-    
     return bMale;
 }
+
+
 
 int App::getCurrentModule(){
     return moduleIndex;

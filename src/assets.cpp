@@ -96,11 +96,12 @@ float Assets::getScale(){
 ofTrueTypeFont *Assets::getFont(float size){
     int i = int(size * getScale());
     if(fonts[i] == NULL){
-        cout << ".";
         fonts[i] = new ofTrueTypeFont();
         fonts[i]->loadFont("Akkurat-Mono.ttf", i, true, true, true);
         fonts[i]->setLetterSpacing(1.1);
         fonts[i]->setSpaceSize(0.3);
+        
+        ofLogNotice() << "Loading: " << "Akkurat-Mono.ttf " << i;
     }
     return fonts[i];
 }

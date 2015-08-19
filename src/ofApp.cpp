@@ -18,7 +18,7 @@ void ofApp::setup(){
     bRotated = true;
     setRotation();
     
-    app.setCurrentState(new Closeup(&app));
+    app.setCurrentState(new Loop(&app));
 
 }
 

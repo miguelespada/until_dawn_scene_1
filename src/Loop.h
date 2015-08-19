@@ -14,6 +14,7 @@ public:
     void next();
     void push();
     void jump();
+    void end();
     
     Body body;
 };

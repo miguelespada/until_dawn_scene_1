@@ -27,7 +27,6 @@ public:
     void setMale(bool s);
     void drawIcons(int w, int h);
     void drawIcon(int n, string label, string value, ofImage icon, ofColor color, float alpha, int radius);
-    void drawCircle(float r);
 };
 
 #endif /* defined(__until_dawn_screen_2__temperature__) */

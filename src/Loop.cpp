@@ -2,6 +2,7 @@
 #include "Assets.h"
 #include "Loop.h"
 #include "preGlitch.h"
+#include "preIndex.h"
 
 Loop::Loop(App *a){
     app = a;
@@ -28,4 +29,10 @@ void Loop::next(){
 };
 
 void Loop::jump(){
+};
+
+
+void Loop::end(){
+    app->setCurrentState(new preIndex(app));
+    delete this;
 };

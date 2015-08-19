@@ -58,7 +58,6 @@ void Body::drawIcons(int w, int h){
     
     ofPushMatrix();
     ofTranslate(0, h/24);
-    drawCircle(w/6);
     ofPopMatrix();
     
     ofPopMatrix();
@@ -95,19 +94,4 @@ void Body::drawIcon(int n, string label, string value, ofImage icon, ofColor col
     
     text_x =  x + w / 2 - font->stringWidth(value) / 2;
     font->drawString(value, text_x, text_y + font->getSize() * 1.4);
-}
-
-void Body::drawCircle(float r){
-    ofEnableSmoothing();
-    ofSetColor(255);
-    ofPath p = ofPath();
-    p.setCircleResolution(200);
-    p.setFilled(false);
-    p.setStrokeColor(255);
-    p.moveTo(r, 0);
-    ofRotate(- ofRadToDeg(icon_alpha), 0, 0, 1);
-    p.arc(0, 0, r, r, 0, 180 );
-    p.setStrokeWidth(1.5);
-    p.draw();
-    ofDisableSmoothing();
 }
