@@ -2,3 +2,4 @@ ofxOsc
 ofxXmlSettings
 ofxJSON
 ofxTween
+ofxTrueTypeFontUC

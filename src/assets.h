@@ -37,11 +37,16 @@ public:
     ofImage icon_optical;
     ofImage icon_hand;
     ofImage icon_termal;
+    ofImage icon_user;
     
+    ofColor red = ofColor(231, 57, 51);
+    ofColor blue = ofColor(0, 116, 188);
+    ofColor yellow = ofColor(254, 223, 82);
+    ofColor green = ofColor(94, 172, 77);
+    ofColor orange = ofColor(243, 144, 69);
     
-    ofTrueTypeFont		font;
-    
-    void setFont(float size);
+    ofTrueTypeFont		*fonts[64];
+    ofTrueTypeFont *getFont(float size);
     
 private:
     static Assets* instance;

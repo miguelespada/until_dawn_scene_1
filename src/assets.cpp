@@ -59,7 +59,6 @@ void Assets::load(){
     ellipse.loadImage(filename);
     ofLogNotice() << "Loading: " << filename;
     
-    
     filename = "icon_termal.png";
     icon_termal.loadImage(filename);
     ofLogNotice() << "Loading: " << filename;
@@ -80,7 +79,12 @@ void Assets::load(){
     icon_heart.loadImage(filename);
     ofLogNotice() << "Loading: " << filename;
     
-
+    filename = "icon_user.png";
+    icon_user.loadImage(filename);
+    ofLogNotice() << "Loading: " << filename;
+    
+    for(int i = 0; i < 64; i++)
+        fonts[i] = NULL;
     
 }
 
@@ -88,8 +92,14 @@ float Assets::getScale(){
     return W / 1920.0;
 }
 
-void Assets::setFont(float size){
-    font.loadFont("Akkurat-Mono.ttf", size * getScale());
-    font.setLetterSpacing(1.1);
-    font.setEncoding(OF_ENCODING_ISO_8859_15);
+ofTrueTypeFont *Assets::getFont(float size){
+    int i = int(size * getScale());
+    if(fonts[i] == NULL){
+        cout << ".";
+        fonts[i] = new ofTrueTypeFont();
+        fonts[i]->loadFont("Akkurat-Mono.ttf", i, true, true, true);
+        fonts[i]->setLetterSpacing(1.1);
+        fonts[i]->setSpaceSize(0.3);
+    }
+    return fonts[i];
 }
