@@ -55,10 +55,6 @@ void Assets::load(){
     degradado.loadImage(filename);
     ofLogNotice() << "Loading: " << filename;
     
-    filename = "ellipse.png";
-    ellipse.loadImage(filename);
-    ofLogNotice() << "Loading: " << filename;
-    
     filename = "icon_termal.png";
     icon_termal.loadImage(filename);
     ofLogNotice() << "Loading: " << filename;
@@ -81,6 +77,11 @@ void Assets::load(){
     
     filename = "icon_user.png";
     icon_user.loadImage(filename);
+    ofLogNotice() << "Loading: " << filename;
+    
+    
+    filename = "wireframe_heart.png";
+    wireframe_heart.loadImage(filename);
     ofLogNotice() << "Loading: " << filename;
     
     for(int i = 0; i < 64; i++)

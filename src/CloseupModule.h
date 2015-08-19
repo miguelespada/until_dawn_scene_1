@@ -9,26 +9,29 @@
 #ifndef until_dawn_screen_1_CloseupModule_h
 #define until_dawn_screen_1_CloseupModule_h
 
+#include "assets.h"
+
 class CloseupModule
 {
+    
 protected:
     ofVideoPlayer video;
+    int w, h;
+    Assets *assets;
     
 public:
     virtual void draw() {};
     
     void drawMovie(){
-        if(ofGetWindowWidth() < ofGetWindowHeight())
-            video.draw(0, 0, ofGetWindowWidth(), ofGetWindowHeight());
-        else
-            video.draw(0, 0, ofGetWindowHeight(), ofGetWindowWidth());
+        video.draw(0, 0, w, h);
     }
     
-    void initMovie(){
+    void initMovie(){        
         video.setLoopState(OF_LOOP_NONE);
     }
     
     void update() {
+        
         if(!video.isPlaying())
             video.play();
         video.update();

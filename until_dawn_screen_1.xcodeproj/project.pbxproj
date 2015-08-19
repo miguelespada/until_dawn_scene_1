@@ -17,6 +17,7 @@
 		2EADF1E9A86464140531F4FE /* heart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09BFE6735DE64CDA02A36C22 /* heart.cpp */; };
 		32FC7731C1EF7B87E491C93D /* ofxTween.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 497F252390399FCF843297DA /* ofxTween.cpp */; };
 		416AB910EEA2FE6CC2B450D5 /* optical.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB9C85B94FBD3EC4D72561A5 /* optical.cpp */; };
+		4955EE0B1B846D7E00579695 /* table.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4955EE091B846D7E00579695 /* table.cpp */; };
 		4ADB88E2FB52E76A471065DE /* ofxOscParameterSync.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0AED834CE4DEC5260AF302A2 /* ofxOscParameterSync.cpp */; };
 		510CAFE035E576A4E1502D52 /* UdpSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6DEF695B88BA5FAACEAA937 /* UdpSocket.cpp */; };
 		5864AD82E20F15536D054EA3 /* ofxOscMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF49D76C45D5DB505A234880 /* ofxOscMessage.cpp */; };
@@ -135,6 +136,8 @@
 		43B2FDAED735D73FF734F634 /* ofxTrueTypeFontUC.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxTrueTypeFontUC.cpp; path = ../../../addons/ofxTrueTypeFontUC/src/ofxTrueTypeFontUC.cpp; sourceTree = SOURCE_ROOT; };
 		444657A12E59D0ED86981498 /* TimerListener.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = TimerListener.h; path = ../../../addons/ofxOsc/libs/oscpack/src/ip/TimerListener.h; sourceTree = SOURCE_ROOT; };
 		48974F980F51769171D0B2F5 /* IpEndpointName.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = IpEndpointName.h; path = ../../../addons/ofxOsc/libs/oscpack/src/ip/IpEndpointName.h; sourceTree = SOURCE_ROOT; };
+		4955EE091B846D7E00579695 /* table.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = table.cpp; sourceTree = "<group>"; };
+		4955EE0A1B846D7E00579695 /* table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = table.h; sourceTree = "<group>"; };
 		497F252390399FCF843297DA /* ofxTween.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxTween.cpp; path = ../../../addons/ofxTween/src/ofxTween.cpp; sourceTree = SOURCE_ROOT; };
 		4B948DEC4411B26F3C9BE5DE /* assets.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = assets.cpp; path = src/assets.cpp; sourceTree = SOURCE_ROOT; };
 		4C0E055E4176057631087AA3 /* ofxEasingQuart.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxEasingQuart.h; path = ../../../addons/ofxTween/src/Easings/ofxEasingQuart.h; sourceTree = SOURCE_ROOT; };
@@ -334,6 +337,8 @@
 		4955EE051B833B0E00579695 /* States */ = {
 			isa = PBXGroup;
 			children = (
+				8A43132902A3127FB1805C3D /* Closeup.cpp */,
+				4CF63BD9DC7A7FB07E00B83B /* Closeup.h */,
 				A7811169C7D51E22EC99D4DE /* Loop.cpp */,
 				C3FFFBA7EE8BE3504F964672 /* Loop.h */,
 				25A937C345870B747145EB20 /* postGlitch.cpp */,
@@ -348,6 +353,8 @@
 		4955EE061B833B1F00579695 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				4955EE091B846D7E00579695 /* table.cpp */,
+				4955EE0A1B846D7E00579695 /* table.h */,
 				67ADC555DA14857F63A9E8CE /* body.cpp */,
 				40BA54E2B33C91151F6E213F /* body.h */,
 				E725B3077DCC18849DE4E132 /* CloseupModule.h */,
@@ -605,8 +612,6 @@
 				4B948DEC4411B26F3C9BE5DE /* assets.cpp */,
 				5EDDE28A9F00A9326EB8BEDD /* assets.h */,
 				4955EE061B833B1F00579695 /* Modules */,
-				8A43132902A3127FB1805C3D /* Closeup.cpp */,
-				4CF63BD9DC7A7FB07E00B83B /* Closeup.h */,
 				4955EE051B833B0E00579695 /* States */,
 			);
 			path = src;
@@ -742,6 +747,7 @@
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
+				4955EE0B1B846D7E00579695 /* table.cpp in Sources */,
 				5F3744A26D0041D0C0FC246A /* App.cpp in Sources */,
 				0ECECEAA015468B5A8B3B9F1 /* assets.cpp in Sources */,
 				DFEEABA239FE8DF60F6D2BE8 /* body.cpp in Sources */,

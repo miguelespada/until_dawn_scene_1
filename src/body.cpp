@@ -7,10 +7,10 @@
 //
 
 #include "body.h"
-#include "ofxTrueTypeFontUC.h"
 
 Body::Body(){
     assets = Assets::getInstance();
+    icon_alpha = 0;
 }
 
 void Body::update(){
@@ -33,10 +33,21 @@ void Body::draw(){
     }
     
     video.draw(0, 0, w, h);
+    drawIcons(w, h);
+    
+    table.drawTable();
+    
+    assets->logos.draw(0, 0, w, h);
+    assets->lineas.draw(0, 0, w, h);
+    assets->degradado.draw(0, 10, w, h);
     
     
+}
+
+void Body::drawIcons(int w, int h){
     ofPushMatrix();
     ofTranslate(w/2, h/4);
+    
     float angle = TWO_PI / 5.0;
     
     drawIcon(1, "RITMO CARDÍACO",  "70 BPM",assets->icon_heart, assets->red, icon_alpha + angle, w/3.4);
@@ -45,32 +56,12 @@ void Body::draw(){
     drawIcon(4, "OPTICAL FLOW", "135 mm/s", assets->icon_optical, assets->green, icon_alpha + angle * 4, w/3.4);
     drawIcon(5, "TEMPERATURA", "37.5 ºC", assets->icon_termal, assets->orange, icon_alpha + angle * 5, w/3.4);
     
-        ofPushMatrix();
-        ofTranslate(0, h/24);
-        drawCircle(w/6);
-        ofPopMatrix();
-        
+    ofPushMatrix();
+    ofTranslate(0, h/24);
+    drawCircle(w/6);
     ofPopMatrix();
     
-    
-    ofTrueTypeFont *font = assets->getFont(12);
-    float scale = assets->getScale();
-    
-    ofEnableSmoothing();
-    
-    drawTableHeader();
-    drawTableRow(1, 1613);
-    drawTableRow(2, 1672);
-    drawTableRow(3, 1727);
-    drawTableRow(4, 1783);
-
-    ofDisableSmoothing();
-    
-    assets->logos.draw(0, 0, w, h);
-    assets->lineas.draw(0, 0, w, h);
-    assets->degradado.draw(0, 10, w, h);
-    
-    
+    ofPopMatrix();
 }
 
 void Body::setMale(bool s){
@@ -119,71 +110,4 @@ void Body::drawCircle(float r){
     p.setStrokeWidth(1.5);
     p.draw();
     ofDisableSmoothing();
-}
-
-void Body::drawTableHeader(){
-    ofTrueTypeFont *font = assets->getFont(12);
-    float scale = assets->getScale();
-    
-    string msg = "RANK";
-    font->drawString(msg, 85 * scale, 1556 * scale + font->stringHeight(msg) / 2);
-    
-    msg = "SUJETO";
-    font->drawString(msg, 164 * scale, 1556 * scale + font->stringHeight(msg) / 2);
-    
-    msg = "ÍNDICE UNTIL DAWN";
-    font->drawString(msg, 767 * scale, 1556 * scale + font->stringHeight(msg) / 2);
-    
-    for(int i = 0; i < 5; i ++){
-        msg = ofToString(i + 1);
-        font->drawString(msg, (412 + i * 70) * scale - font->stringWidth(msg)/2, 1556 * scale + font->stringHeight(msg) / 2);
-    }
-    
-    
-    int ww = assets->icon_user.getWidth() * assets->getScale();
-    int hh = assets->icon_user.getHeight() * assets->getScale();
-    
-    assets->icon_user.draw(142 * scale, 1556 * scale - hh/2, ww, hh);
-}
-
-
-void Body::drawTableRow(int r, int y){
-    ofTrueTypeFont *font = assets->getFont(12);
-    float scale = assets->getScale();
-
-    string msg = ofToString(r);
-    font->drawString(msg, 85 * scale, y * scale + font->stringHeight(msg) / 2);
-    
-    msg = "MIGUEL V. ESPADA";
-    font->drawString(msg, 164 * scale, y * scale + font->stringHeight(msg) / 2);
-    
-    
-    for(int i = 0; i < 5; i ++){
-        msg = ofToString("100%");
-        font->drawString(msg, (412 + i * 70) * scale - font->stringWidth(msg)/2, y * scale + font->stringHeight(msg) / 2);
-    }
-    
-    msg = "99%";
-    font->drawString(msg, 830 * scale, y * scale + font->stringHeight(msg) / 2);
-    
-    ofSetColor(assets->red);
-    msg = "PÁNICO";
-    font->drawString(msg, 875 * scale, y * scale + font->stringHeight(msg) / 2);
-    
-    ofSetColor(255);
-    
-    
-    for(int i = 0; i < 5; i ++){
-        ofSetColor(assets->red);
-        ofRect((771 + i * 10) * scale , y * scale - 12 * scale, 6 * scale, 22 * scale);
-        ofSetColor(255);
-        ofNoFill();
-        ofRect((771 + i * 10) * scale , y * scale - 12 * scale, 6 * scale, 22 * scale);
-    }
-    
-    
-    int ww = assets->icon_user.getWidth() * assets->getScale();
-    int hh = assets->icon_user.getHeight() * assets->getScale();
-    
-    assets->icon_user.draw(142 * scale, y * scale - hh/2, ww, hh);
 }

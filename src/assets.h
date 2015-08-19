@@ -31,13 +31,16 @@ public:
     ofImage lineas;
     ofImage logos;
     ofImage degradado;
-    ofImage ellipse;
     ofImage icon_heart;
     ofImage icon_pressure;
     ofImage icon_optical;
     ofImage icon_hand;
     ofImage icon_termal;
     ofImage icon_user;
+    
+    
+    ofImage wireframe_heart;
+    
     
     ofColor red = ofColor(231, 57, 51);
     ofColor blue = ofColor(0, 116, 188);

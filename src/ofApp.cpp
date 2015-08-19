@@ -1,5 +1,6 @@
 #include "ofApp.h"
 #include "Loop.h"
+#include "Closeup.h"
 
 
 //--------------------------------------------------------------
@@ -17,7 +18,7 @@ void ofApp::setup(){
     bRotated = true;
     setRotation();
     
-    app.setCurrentState(new Loop(&app));
+    app.setCurrentState(new Closeup(&app));
 
 }
 

@@ -3,9 +3,11 @@
 #define __heart__
 #include "ofMain.h"
 #include "CloseupModule.h"
+#include "table.h"
 
 class Heart : public CloseupModule
 {
+    Table table;
 public:
     Heart();
     void draw();
