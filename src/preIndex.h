@@ -16,10 +16,12 @@ class preIndex: public State
     
 public:
     preIndex(App *g);
+    ~preIndex(){};
     std::string toString() { return "preIndex"; }
     void update();
     void draw();
     void next();
+    
     float alpha;
     int dots;
 };

@@ -105,3 +105,18 @@ ofTrueTypeFont *Assets::getFont(float size){
     }
     return fonts[i];
 }
+
+int Assets::getWidth(){
+    if(ofGetWindowWidth() < ofGetWindowHeight())
+       return ofGetWindowWidth();
+    else
+        return ofGetWindowHeight();
+}
+
+
+int Assets::getHeight(){
+    if(ofGetWindowWidth() < ofGetWindowHeight())
+        return ofGetWindowHeight();
+    else
+        return ofGetWindowWidth();
+}

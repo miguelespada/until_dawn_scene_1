@@ -51,6 +51,9 @@ public:
     ofTrueTypeFont		*fonts[64];
     ofTrueTypeFont *getFont(float size);
     
+    int getWidth();
+    int getHeight();
+    
 private:
     static Assets* instance;
     Assets();

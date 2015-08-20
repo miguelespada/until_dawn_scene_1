@@ -21,25 +21,12 @@ protected:
     
 public:
     virtual void draw() {};
-    
-    void drawMovie(){
-        video.draw(0, 0, w, h);
-    }
-    
-    void initMovie(){        
-        video.setLoopState(OF_LOOP_NONE);
-    }
-    
-    void update() {
-        
-        if(!video.isPlaying())
-            video.play();
-        video.update();
-    };
-    
-    bool isDone() {
-        return video.getIsMovieDone();
-    };
+    void init();
+    void drawMovie();
+    void initMovie();
+    void update();
+    bool isDone();
+    void setWidthHeight();
 };
 
 

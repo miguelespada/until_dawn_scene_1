@@ -10,6 +10,8 @@
 #include "assets.h"
 
 Optical::Optical(){
+    
+    CloseupModule::init();
     video = Assets::getInstance()->closeups[0];
     initMovie();
 }

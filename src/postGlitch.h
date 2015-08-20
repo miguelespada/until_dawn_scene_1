@@ -17,12 +17,11 @@ class postGlitch: public State
     
 public:
     postGlitch(App *g);
+    ~postGlitch(){};
     std::string toString() { return "postGlitch"; }
     void update();
     void draw();
     void next();
-    void push();
-    void jump();
     
     
 };

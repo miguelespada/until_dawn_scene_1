@@ -1,7 +1,8 @@
 #include "ofApp.h"
 #include "Loop.h"
 #include "Closeup.h"
-
+#include "standby.h"
+#include "preIndex.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -46,10 +47,18 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     switch (key) {
-
+            
         case 'R':
             bRotated = !bRotated;
             setRotation();
+            break;
+        case 'S':
+            delete app.current_state;
+            app.setCurrentState(new Standby(&app));
+            break;
+        case 'I':
+            delete app.current_state;
+            app.setCurrentState(new preIndex(&app));
             break;
         default:
             break;

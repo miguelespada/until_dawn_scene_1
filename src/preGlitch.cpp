@@ -22,10 +22,11 @@ preGlitch::preGlitch(App *a){
 
 void preGlitch::draw(){
     
-    if(ofGetWindowWidth() < ofGetWindowHeight())
-        video.draw(0, 0, ofGetWindowWidth(), ofGetWindowHeight());
-    else
-        video.draw(0, 0, ofGetWindowHeight(), ofGetWindowWidth());
+    int w = Assets::getInstance()->getWidth();
+    int h = Assets::getInstance()->getHeight();
+    
+    if(video.isLoaded())
+        video.draw(0, 0, w, h);
 };
 
 void preGlitch::update(){
@@ -35,14 +36,8 @@ void preGlitch::update(){
     }
 }
 
-void preGlitch::push(){
-};
-
 void preGlitch::next(){
     app->setCurrentState(new Closeup(app));
     delete this;
     
-};
-
-void preGlitch::jump(){
 };

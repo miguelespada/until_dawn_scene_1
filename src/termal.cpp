@@ -10,6 +10,8 @@
 #include "assets.h"
 
 Termal::Termal(){
+    
+    CloseupModule::init();
     video = Assets::getInstance()->closeups[2];
     initMovie();
 }

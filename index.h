@@ -16,12 +16,11 @@ class Index: public State
     
 public:
     Index(App *g);
+    ~Index(){};
     std::string toString() { return "index"; }
     void update();
     void draw();
     void next();
-    void push();
-    void jump();
     void init();
 };
 

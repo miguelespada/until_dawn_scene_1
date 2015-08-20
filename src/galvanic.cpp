@@ -10,6 +10,8 @@
 #include "assets.h"
 
 Galvanic::Galvanic(){
+    
+    CloseupModule::init();
     video = Assets::getInstance()->closeups[4];
     initMovie();
 }

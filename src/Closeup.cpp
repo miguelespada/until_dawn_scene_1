@@ -53,14 +53,8 @@ void Closeup::update(){
         next();
 }
 
-void Closeup::push(){
-};
-
 void Closeup::next(){
     app->setCurrentState(new postGlitch(app));
     delete closeup;
     delete this;
-};
-
-void Closeup::jump(){
 };

@@ -7,13 +7,12 @@
 class Loop: public State
 {
 public:
+    ~Loop(){};
     Loop(App *g);
     std::string toString() { return "Loop"; }
     void update();
     void draw();
     void next();
-    void push();
-    void jump();
     void end();
     
     Body body;

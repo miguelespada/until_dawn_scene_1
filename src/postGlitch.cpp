@@ -22,10 +22,12 @@ postGlitch::postGlitch(App *a){
 
 void postGlitch::draw(){
     
-    if(ofGetWindowWidth() < ofGetWindowHeight())
-        video.draw(0, 0, ofGetWindowWidth(), ofGetWindowHeight());
-    else
-        video.draw(0, 0, ofGetWindowHeight(), ofGetWindowWidth());
+    int w = Assets::getInstance()->getWidth();
+    int h = Assets::getInstance()->getHeight();
+    
+    if(video.isLoaded())
+        video.draw(0, 0, w, h);
+        
 };
 
 void postGlitch::update(){
@@ -35,15 +37,9 @@ void postGlitch::update(){
     }
 }
 
-void postGlitch::push(){
-};
-
 void postGlitch::next(){
     app->setCurrentState(new Loop(app));    
     app->incCurrentModule();
     delete this;
     
-};
-
-void postGlitch::jump(){
 };

@@ -18,12 +18,11 @@ class Closeup: public State
     
 public:
     Closeup(App *g);
+    ~Closeup(){};
     std::string toString() { return "Closeup"; }
     void update();
     void draw();
     void next();
-    void push();
-    void jump();
     
     CloseupModule *closeup;
 };

@@ -17,12 +17,11 @@ class preGlitch: public State
     
 public:
     preGlitch(App *g);
+    ~preGlitch(){};
     std::string toString() { return "preGlitch"; }
     void update();
     void draw();
     void next();
-    void push();
-    void jump();
     
     
 };

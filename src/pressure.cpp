@@ -10,6 +10,8 @@
 #include "assets.h"
 
 Pressure::Pressure(){
+    
+    CloseupModule::init();
     video = Assets::getInstance()->closeups[3];
     initMovie();
 }

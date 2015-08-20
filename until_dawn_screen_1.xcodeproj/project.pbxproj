@@ -20,6 +20,8 @@
 		49062B2C1B84CE75002C42A5 /* index.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49062B2A1B84CE75002C42A5 /* index.cpp */; };
 		49062B2F1B84D057002C42A5 /* preIndex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49062B2D1B84D057002C42A5 /* preIndex.cpp */; };
 		4955EE0B1B846D7E00579695 /* table.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4955EE091B846D7E00579695 /* table.cpp */; };
+		496F33CE1B85B99B004B88ED /* CloseupModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 496F33CD1B85B99B004B88ED /* CloseupModule.cpp */; };
+		496F33D11B85BC5D004B88ED /* standby.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 496F33CF1B85BC5D004B88ED /* standby.cpp */; };
 		4ADB88E2FB52E76A471065DE /* ofxOscParameterSync.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0AED834CE4DEC5260AF302A2 /* ofxOscParameterSync.cpp */; };
 		510CAFE035E576A4E1502D52 /* UdpSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6DEF695B88BA5FAACEAA937 /* UdpSocket.cpp */; };
 		5864AD82E20F15536D054EA3 /* ofxOscMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF49D76C45D5DB505A234880 /* ofxOscMessage.cpp */; };
@@ -144,6 +146,9 @@
 		49062B2E1B84D057002C42A5 /* preIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = preIndex.h; sourceTree = "<group>"; };
 		4955EE091B846D7E00579695 /* table.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = table.cpp; sourceTree = "<group>"; };
 		4955EE0A1B846D7E00579695 /* table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = table.h; sourceTree = "<group>"; };
+		496F33CD1B85B99B004B88ED /* CloseupModule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloseupModule.cpp; sourceTree = "<group>"; };
+		496F33CF1B85BC5D004B88ED /* standby.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = standby.cpp; sourceTree = "<group>"; };
+		496F33D01B85BC5D004B88ED /* standby.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = standby.h; sourceTree = "<group>"; };
 		497F252390399FCF843297DA /* ofxTween.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxTween.cpp; path = ../../../addons/ofxTween/src/ofxTween.cpp; sourceTree = SOURCE_ROOT; };
 		4B948DEC4411B26F3C9BE5DE /* assets.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = assets.cpp; path = src/assets.cpp; sourceTree = SOURCE_ROOT; };
 		4C0E055E4176057631087AA3 /* ofxEasingQuart.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxEasingQuart.h; path = ../../../addons/ofxTween/src/Easings/ofxEasingQuart.h; sourceTree = SOURCE_ROOT; };
@@ -347,6 +352,8 @@
 				49062B2E1B84D057002C42A5 /* preIndex.h */,
 				49062B2A1B84CE75002C42A5 /* index.cpp */,
 				49062B2B1B84CE75002C42A5 /* index.h */,
+				496F33CF1B85BC5D004B88ED /* standby.cpp */,
+				496F33D01B85BC5D004B88ED /* standby.h */,
 				8A43132902A3127FB1805C3D /* Closeup.cpp */,
 				4CF63BD9DC7A7FB07E00B83B /* Closeup.h */,
 				A7811169C7D51E22EC99D4DE /* Loop.cpp */,
@@ -368,16 +375,17 @@
 				67ADC555DA14857F63A9E8CE /* body.cpp */,
 				40BA54E2B33C91151F6E213F /* body.h */,
 				E725B3077DCC18849DE4E132 /* CloseupModule.h */,
+				496F33CD1B85B99B004B88ED /* CloseupModule.cpp */,
 				AEEB955337623AEDB9FB7363 /* galvanic.cpp */,
 				B9BDB86C59870F00D9E072FD /* galvanic.h */,
-				09BFE6735DE64CDA02A36C22 /* heart.cpp */,
-				6C1F644BE9972A124FB0A765 /* heart.h */,
 				BB9C85B94FBD3EC4D72561A5 /* optical.cpp */,
 				61F249D9488C1464662B82CC /* optical.h */,
 				D5744A1C808D0EA60D024D0B /* pressure.cpp */,
 				CA0AF139AEFE17AB958E6B42 /* pressure.h */,
 				7CCCF96898BD189B7FC2289E /* termal.cpp */,
 				42FC80A69C2FF37F83882855 /* termal.h */,
+				09BFE6735DE64CDA02A36C22 /* heart.cpp */,
+				6C1F644BE9972A124FB0A765 /* heart.h */,
 			);
 			name = Modules;
 			sourceTree = "<group>";
@@ -758,6 +766,7 @@
 				49062B2F1B84D057002C42A5 /* preIndex.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
+				496F33D11B85BC5D004B88ED /* standby.cpp in Sources */,
 				4955EE0B1B846D7E00579695 /* table.cpp in Sources */,
 				5F3744A26D0041D0C0FC246A /* App.cpp in Sources */,
 				0ECECEAA015468B5A8B3B9F1 /* assets.cpp in Sources */,
@@ -770,6 +779,7 @@
 				49062B2C1B84CE75002C42A5 /* index.cpp in Sources */,
 				BD434CD3CD8D13CFAB3BDCF2 /* postGlitch.cpp in Sources */,
 				01A2901ACDC55C9FCB47FF22 /* preGlitch.cpp in Sources */,
+				496F33CE1B85B99B004B88ED /* CloseupModule.cpp in Sources */,
 				93A5654ADA118A8672847223 /* pressure.cpp in Sources */,
 				749B4B008D214A6ADF67B36E /* termal.cpp in Sources */,
 				72A929D3561B8232A182ABFC /* ofxOscBundle.cpp in Sources */,

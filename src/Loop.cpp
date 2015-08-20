@@ -19,16 +19,10 @@ void Loop::update(){
 
 }
 
-void Loop::push(){
-};
-
 void Loop::next(){
     
     app->setCurrentState(new preGlitch(app));
     delete this;
-};
-
-void Loop::jump(){
 };
 
 

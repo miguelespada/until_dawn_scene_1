@@ -21,18 +21,12 @@ void Body::update(){
 }
 
 void Body::draw(){
-    int w, h;
+    int w = assets->getWidth();
+    int h = assets->getHeight();
     
-    if(ofGetWindowWidth() < ofGetWindowHeight()){
-        w = ofGetWindowWidth();
-        h = ofGetWindowHeight();
-    }
-    else{
-        h = ofGetWindowWidth();
-        w = ofGetWindowHeight();
-    }
+    if(video.isLoaded())
+        video.draw(0, 0, w, h);
     
-    video.draw(0, 0, w, h);
     drawIcons(w, h);
     
     table.drawTable();

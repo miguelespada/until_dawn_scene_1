@@ -46,10 +46,6 @@ void App::draw(){
 void App::update(){
     current_state->update();
     ofSendMessage("[Info] " + current_state->toString());
-}
-
-void App::update(ofEventArgs &args){
-    update();
     
     if(ofGetFrameNum() % 30 == 0){
         ofxJSONElement response;
@@ -61,6 +57,12 @@ void App::update(ofEventArgs &args){
         else
             current_state->end();
     }
+}
+
+void App::update(ofEventArgs &args){
+    update();
+    
+
 }
 
 

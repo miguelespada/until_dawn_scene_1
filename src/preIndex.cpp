@@ -21,16 +21,8 @@ preIndex::preIndex(App *a){
 };
 
 void preIndex::draw(){
-    int w, h;
-    
-    if(ofGetWindowWidth() < ofGetWindowHeight()){
-        w = ofGetWindowWidth();
-        h = ofGetWindowHeight();
-    }
-    else{
-        h = ofGetWindowWidth();
-        w = ofGetWindowHeight();
-    }
+    int w = Assets::getInstance()->getWidth();
+    int h = Assets::getInstance()->getHeight();
     
     ofPushMatrix();
     
