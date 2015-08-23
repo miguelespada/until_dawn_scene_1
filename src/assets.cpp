@@ -89,34 +89,16 @@ void Assets::load(){
     
 }
 
-float Assets::getScale(){
-    return W / 1920.0;
-}
 
-ofTrueTypeFont *Assets::getFont(float size){
-    int i = int(size * getScale());
-    if(fonts[i] == NULL){
-        fonts[i] = new ofTrueTypeFont();
-        fonts[i]->loadFont("Akkurat-Mono.ttf", i, true, true, true);
-        fonts[i]->setLetterSpacing(1.1);
-        fonts[i]->setSpaceSize(0.3);
+ofTrueTypeFont *Assets::getFont(int size){
+    if(fonts[size] == NULL){
+        fonts[size] = new ofTrueTypeFont();
+        fonts[size]->loadFont("Akkurat-Mono.ttf", size, true, true, true);
+        fonts[size]->setLetterSpacing(1.1);
+        fonts[size]->setSpaceSize(0.3);
         
-        ofLogNotice() << "Loading: " << "Akkurat-Mono.ttf " << i;
+        ofLogNotice() << "Loading: " << "Akkurat-Mono.ttf " << size;
     }
-    return fonts[i];
+    return fonts[size];
 }
 
-int Assets::getWidth(){
-    if(ofGetWindowWidth() < ofGetWindowHeight())
-       return ofGetWindowWidth();
-    else
-        return ofGetWindowHeight();
-}
-
-
-int Assets::getHeight(){
-    if(ofGetWindowWidth() < ofGetWindowHeight())
-        return ofGetWindowHeight();
-    else
-        return ofGetWindowWidth();
-}

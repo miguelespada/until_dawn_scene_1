@@ -9,7 +9,7 @@ void ofApp::setup(){
     
 //    ofSetWindowPosition(0, 0);
 //    ofToggleFullscreen();
-    ofSetFrameRate(30);
+    ofSetFrameRate(12);
     
     assets = Assets::getInstance();
 
@@ -39,9 +39,13 @@ void ofApp::draw(){
         ofRotate(-90);
     }
     
-    app.draw();    
-    ofPopMatrix();
+    if(ofGetWindowWidth() < ofGetWindowHeight())
+        ofScale(ofGetWidth() / 1080., ofGetHeight() / 1920. );
+    else
+        ofScale(ofGetWidth() / 1920., ofGetHeight() / 1080. );
     
+    app.draw();
+    ofPopMatrix();
 }
 
 //--------------------------------------------------------------
@@ -71,11 +75,10 @@ void ofApp::keyReleased(int key){
     keyIsDown[key] = false;
 
 }
-
 void ofApp::setRotation(){
     
     if(bRotated)
-        ofSetWindowShape(1080 * assets->getScale(), 1920 * assets->getScale());
+        ofSetWindowShape(HH, WW);
     else
-        ofSetWindowShape(1920 * assets->getScale(), 1080 * assets->getScale());
+        ofSetWindowShape(WW, HH);
 }

@@ -25,8 +25,8 @@ void Heart::draw(){
     
     table.drawTable();
     
-    assets->wireframe_heart.draw(0, 0, w, h);
-    assets->logos.draw(0, 0, w, h);
-    assets->lineas.draw(0, 0, w, h);
-    assets->degradado.draw(0, 10, w, h);
+    assets->wireframe_heart.draw(0, 0);
+    assets->logos.draw(0, 0);
+    assets->lineas.draw(0, 0);
+    assets->degradado.draw(0, 10);
 }

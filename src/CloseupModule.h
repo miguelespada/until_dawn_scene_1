@@ -16,7 +16,6 @@ class CloseupModule
     
 protected:
     ofVideoPlayer video;
-    int w, h;
     Assets *assets;
     
 public:
@@ -26,7 +25,6 @@ public:
     void initMovie();
     void update();
     bool isDone();
-    void setWidthHeight();
 };
 
 

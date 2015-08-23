@@ -11,15 +11,13 @@
 Table::Table(){
     assets = Assets::getInstance();
     
-    top.open("http://localhost:3000/top.json");
+    top.open("http://192.168.1.42:3000/top.json");
 }
 
 void Table::drawTable(){
-    if(ofGetFrameNum() % 60 == 0){
-        top.open("http://localhost:3000/top.json");
-    }
+    if(ofGetFrameNum() % 30 == 0)
+        top.open("http://192.168.1.42:3000/top.json");
     
-    ofEnableSmoothing();
     
     drawTableHeader();
     drawTableRow(1, 1613);
@@ -27,7 +25,6 @@ void Table::drawTable(){
     drawTableRow(3, 1727);
     drawTableRow(4, 1783);
     
-    ofDisableSmoothing();
 }
 
 void Table::drawTableHeader(){
@@ -35,70 +32,50 @@ void Table::drawTableHeader(){
  
     
     ofTrueTypeFont *font = assets->getFont(12);
-    float scale = assets->getScale();
     
     string msg = "RANK";
-    font->drawString(msg, 85 * scale, 1556 * scale + font->stringHeight(msg) / 2);
+    font->drawStringAsShapes(msg, 85 , 1556 + font->stringHeight(msg) / 2);
     
     msg = "SUJETO";
-    font->drawString(msg, 164 * scale, 1556 * scale + font->stringHeight(msg) / 2);
+    font->drawStringAsShapes(msg, 164 , 1556 + font->stringHeight(msg) / 2);
     
     msg = "ÍNDICE UNTIL DAWN";
-    font->drawString(msg, 767 * scale, 1556 * scale + font->stringHeight(msg) / 2);
+    font->drawStringAsShapes(msg, 767 , 1556  + font->stringHeight(msg) / 2);
     
-    for(int i = 0; i < 5; i ++){
-        msg = ofToString(i + 1);
-        font->drawString(msg, (412 + i * 70) * scale - font->stringWidth(msg)/2, 1556 * scale + font->stringHeight(msg) / 2);
-    }
+    msg = "STRESS";
+    font->drawStringAsShapes(msg, 400 , 1556  + font->stringHeight(msg) / 2);
     
     
-    int ww = assets->icon_user.getWidth() * assets->getScale();
-    int hh = assets->icon_user.getHeight() * assets->getScale();
-    
-    assets->icon_user.draw(142 * scale, 1556 * scale - hh/2, ww, hh);
+    assets->icon_user.draw(142 , 1556  - assets->icon_user.getHeight()/2);
 }
 
 
 void Table::drawTableRow(int r, int y){
     ofTrueTypeFont *font = assets->getFont(12);
-    float scale = assets->getScale();
     
     string msg = ofToString(r);
-    font->drawString(msg, 85 * scale, y * scale + font->stringHeight(msg) / 2);
+    font->drawStringAsShapes(msg, 85 , y  + font->stringHeight(msg) / 2);
     
     msg = top[r - 1]["name"].asString();
     
-    font->drawString(msg, 164 * scale, y * scale + font->stringHeight(msg) / 2);
+    font->drawStringAsShapes(msg, 164 , y  + font->stringHeight(msg) / 2);
     
-    int i;
-    
-    msg = top[r - 1]["heart"].asString() + "%";
-    i = 0;
-    font->drawString(msg, (412 + i * 70) * scale - font->stringWidth(msg)/2, y * scale + font->stringHeight(msg) / 2);
-    
-    msg = top[r - 1]["galvanic"].asString() + "%";
-    i = 1;
-    font->drawString(msg, (412 + i * 70) * scale - font->stringWidth(msg)/2, y * scale + font->stringHeight(msg) / 2);
-    
-    msg = top[r - 1]["pressure"].asString() + "%";
-    i = 2;
-    font->drawString(msg, (412 + i * 70) * scale - font->stringWidth(msg)/2, y * scale + font->stringHeight(msg) / 2);
-    
-    msg = top[r - 1]["optical_flow"].asString() + "%";
-    i = 3;
-    font->drawString(msg, (412 + i * 70) * scale - font->stringWidth(msg)/2, y * scale + font->stringHeight(msg) / 2);
-    
-    msg = top[r - 1]["temperature"].asString() + "%";
-    i = 4;
-    font->drawString(msg, (412 + i * 70) * scale - font->stringWidth(msg)/2, y * scale + font->stringHeight(msg) / 2);
-    
+    ofPushMatrix();
+    ofTranslate(400, y + 7);
+    ofScale(0.25, 1);
+    ofxJSONElement stress = top[r - 1]["stress"];
+    for(int i = 0; i < stress.size(); i++){
+        float v = stress[i].asFloat() / 5;
+        ofLine(i, 0, i, -v);
+    }
+    ofPopMatrix();
     
     msg = top[r - 1]["indice"].asString() + "%";
-    font->drawString(msg, 830 * scale, y * scale + font->stringHeight(msg) / 2);
+    font->drawStringAsShapes(msg, 830 , y  + font->stringHeight(msg) / 2);
     
     ofSetColor(assets->red);
     msg = "PÁNICO";
-    font->drawString(msg, 875 * scale, y * scale + font->stringHeight(msg) / 2);
+    font->drawStringAsShapes(msg, 875 , y  + font->stringHeight(msg) / 2);
     
     ofSetColor(255);
     
@@ -110,16 +87,16 @@ void Table::drawTableRow(int r, int y){
         else
             ofNoFill();
         
-        ofRect((771 + i * 10) * scale , y * scale - 12 * scale, 6 * scale, 22 * scale);
+        ofRect((771 + i * 10)  , y  - 12 , 6 , 22 );
         ofSetColor(255);
         ofNoFill();
-        ofRect((771 + i * 10) * scale , y * scale - 12 * scale, 6 * scale, 22 * scale);
+        ofRect((771 + i * 10)  , y  - 12 , 6 , 22 );
         ofFill();
     }
     
     
-    int ww = assets->icon_user.getWidth() * assets->getScale();
-    int hh = assets->icon_user.getHeight() * assets->getScale();
+    int ww = assets->icon_user.getWidth();
+    int hh = assets->icon_user.getHeight();
     
-    assets->icon_user.draw(142 * scale, y * scale - hh/2, ww, hh);
+    assets->icon_user.draw(142 , y  - hh/2, ww, hh);
 }

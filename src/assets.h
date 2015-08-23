@@ -12,8 +12,8 @@
 #include "ofMain.h"
 
 #define SCALE 2
-#define W 1920/SCALE
-#define H 1080/SCALE
+#define WW 1920/SCALE
+#define HH 1080/SCALE
 
 
 class Assets{
@@ -21,7 +21,6 @@ public:
     static Assets* getInstance();
     void load();
     
-    float getScale();
     
     ofVideoPlayer male_loop;
     ofVideoPlayer female_loop;
@@ -49,10 +48,7 @@ public:
     ofColor orange = ofColor(243, 144, 69);
     
     ofTrueTypeFont		*fonts[64];
-    ofTrueTypeFont *getFont(float size);
-    
-    int getWidth();
-    int getHeight();
+    ofTrueTypeFont      *getFont(int size);
     
 private:
     static Assets* instance;

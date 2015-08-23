@@ -8,9 +8,10 @@
 
 #include "body.h"
 
-Body::Body(){
+Body::Body(App *a){
     assets = Assets::getInstance();
     icon_alpha = 0;
+    app = a;
 }
 
 void Body::update(){
@@ -21,19 +22,17 @@ void Body::update(){
 }
 
 void Body::draw(){
-    int w = assets->getWidth();
-    int h = assets->getHeight();
     
     if(video.isLoaded())
-        video.draw(0, 0, w, h);
+        video.draw(0, 0);
     
-    drawIcons(w, h);
+    drawIcons(1080, 1920);
     
     table.drawTable();
     
-    assets->logos.draw(0, 0, w, h);
-    assets->lineas.draw(0, 0, w, h);
-    assets->degradado.draw(0, 10, w, h);
+    assets->logos.draw(0, 0);
+    assets->lineas.draw(0, 0);
+    assets->degradado.draw(0, 10);
     
     
 }
@@ -44,11 +43,38 @@ void Body::drawIcons(int w, int h){
     
     float angle = TWO_PI / 5.0;
     
-    drawIcon(1, "RITMO CARDÍACO",  "70 BPM",assets->icon_heart, assets->red, icon_alpha + angle, w/3.4);
-    drawIcon(2, "CONDUCTIVIDAD GALVÁNICA", "4.55 V", assets->icon_hand, assets->blue, icon_alpha + angle * 2, w/3.4);
-    drawIcon(3, "PRESIÓN ARTERIAL", "STABLE", assets->icon_pressure, assets->yellow, icon_alpha + angle * 3, w/3.4);
-    drawIcon(4, "OPTICAL FLOW", "135 mm/s", assets->icon_optical, assets->green, icon_alpha + angle * 4, w/3.4);
-    drawIcon(5, "TEMPERATURA", "37.5 ºC", assets->icon_termal, assets->orange, icon_alpha + angle * 5, w/3.4);
+    
+    float value;
+    string msg;
+    
+    value = app->data["heartRate"][app->data["heartRate"].size() - 1].asFloat();
+    msg = ofToString(value) + " BPM";
+    
+    
+    drawIcon(1, "RITMO CARDÍACO",  msg, assets->icon_heart, assets->red, icon_alpha + angle, w/3.4);
+    
+    
+    value = app->data["galvanicVoltage"][app->data["galvanicVoltage"].size() - 1].asFloat();
+    msg = ofToString(value/100) + " V";
+    
+    
+    drawIcon(2, "CONDUCTIVIDAD GALVÁNICA", msg, assets->icon_hand, assets->blue, icon_alpha + angle * 2, w/3.4);
+    
+    
+    value = app->data["stress"][app->data["stress"].size() - 1].asFloat();
+    msg = ofToString(value) + " %";
+    
+    
+    drawIcon(3, "STRESS", msg, assets->icon_pressure, assets->yellow, icon_alpha + angle * 3, w/3.4);
+    
+    value = app->data["flow"][app->data["flow"].size() - 1].asFloat();
+    msg = ofToString(value*100) + " mm/s";
+    
+    drawIcon(4, "OPTICAL FLOW", msg, assets->icon_optical, assets->green, icon_alpha + angle * 4, w/3.4);
+    
+    value = app->data["temp"][app->data["temp"].size() - 1].asFloat();
+    msg = ofToString(value/100) + " ºC";
+    drawIcon(5, "TEMPERATURA", msg, assets->icon_termal, assets->orange, icon_alpha + angle * 5, w/3.4);
     
     ofPushMatrix();
     ofTranslate(0, h/24);
@@ -65,8 +91,8 @@ void Body::setMale(bool s){
 }
 
 void Body::drawIcon(int n, string label, string value, ofImage icon, ofColor color, float alpha, int radius){
-    int w = icon.getWidth() * assets->getScale();
-    int h = icon.getHeight() * assets->getScale();
+    int w = icon.getWidth();
+    int h = icon.getHeight();
     
     float y = sin(alpha) * radius;
     float x = cos(alpha) * radius;
@@ -78,14 +104,14 @@ void Body::drawIcon(int n, string label, string value, ofImage icon, ofColor col
     int text_y =  y + h + font->getSize() * 1.8;
     int text_x = x + w / 2 - font->stringWidth(label)/2;
     
-    font->drawString(label, text_x, text_y);
+    font->drawStringAsShapes(label, text_x, text_y);
     ofSetColor(color);
     string msg = ofToString(n);
-    font->drawString(msg, text_x - font->stringWidth(msg) * 1.5 , text_y);
+    font->drawStringAsShapes(msg, text_x - font->stringWidth(msg) * 1.5 , text_y);
     ofSetColor(255);
     
     font = assets->getFont(17);
     
     text_x =  x + w / 2 - font->stringWidth(value) / 2;
-    font->drawString(value, text_x, text_y + font->getSize() * 1.4);
+    font->drawStringAsShapes(value, text_x, text_y + font->getSize() * 1.4);
 }

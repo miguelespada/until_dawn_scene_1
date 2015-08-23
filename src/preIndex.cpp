@@ -21,8 +21,8 @@ preIndex::preIndex(App *a){
 };
 
 void preIndex::draw(){
-    int w = Assets::getInstance()->getWidth();
-    int h = Assets::getInstance()->getHeight();
+    int w = 1920;
+    int h = 1080;
     
     ofPushMatrix();
     
@@ -49,19 +49,19 @@ void preIndex::draw(){
     string msg = "CALCULANDO";
     
     int text_x = w / 2 - font->stringWidth(msg) / 2;
-    font->drawString(msg, text_x, h/4);
+    font->drawStringAsShapes(msg, text_x, h/4);
     
     msg = "ÍNDICE UNTIL DAWN";
     
     
     text_x = w / 2 - font->stringWidth(msg) / 2;
-    font->drawString(msg, text_x, h/4 + font->stringHeight(msg) * 1.5);
+    font->drawStringAsShapes(msg, text_x, h/4 + font->stringHeight(msg) * 1.5);
     
     string dots_msg = "";
     for(int i = 0; i < dots; i ++)
         dots_msg += ".";
     
-    font->drawString(dots_msg, text_x + font->stringWidth(msg) - 20 * Assets::getInstance()->getScale() , h/4 + font->stringHeight(msg) * 1.5);
+    font->drawStringAsShapes(dots_msg, text_x + font->stringWidth(msg) - 20 , h/4 + font->stringHeight(msg) * 1.5);
 };
 
 void preIndex::update(){

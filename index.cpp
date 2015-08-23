@@ -17,8 +17,8 @@ Index::Index(App *a){
 };
 
 void Index::draw(){
-    int w = Assets::getInstance()->getWidth();
-    int h = Assets::getInstance()->getHeight();
+    int w = 1920;
+    int h = 1080;
     
     ofTrueTypeFont *font = Assets::getInstance()->getFont(30);
     
@@ -26,7 +26,7 @@ void Index::draw(){
     
     
     int text_x = w / 2 - font->stringWidth(msg) / 2;
-    font->drawString(msg, text_x, h/4 + font->stringHeight(msg) * 1.5);
+    font->drawStringAsShapes(msg, text_x, h/4 + font->stringHeight(msg) * 1.5);
     
 };
 

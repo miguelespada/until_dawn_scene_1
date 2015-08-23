@@ -7,21 +7,23 @@
 Loop::Loop(App *a){
     app = a;
     ofLogNotice() << "State: " << toString();
+    body = new Body(app);
 };
 
 void Loop::draw(){
-    body.setMale(app->isMale());
-    body.draw();
+    body->setMale(app->isMale());
+    body->draw();
 };
 
 void Loop::update(){
-    body.update();
+    body->update();
 
 }
 
 void Loop::next(){
     
     app->setCurrentState(new preGlitch(app));
+    delete body;
     delete this;
 };
 

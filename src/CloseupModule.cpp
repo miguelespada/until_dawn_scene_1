@@ -9,13 +9,12 @@
 #include "CloseupModule.h"
 
 void CloseupModule::init(){
-    setWidthHeight();
     assets = Assets::getInstance();
 }
 
 void CloseupModule::drawMovie(){
     if(video.isLoaded())
-        video.draw(0, 0, w, h);
+        video.draw(0, 0);
 }
 
 void CloseupModule::initMovie(){
@@ -23,7 +22,6 @@ void CloseupModule::initMovie(){
 }
 
 void CloseupModule::update() {
-    setWidthHeight();
     
     if(!video.isPlaying())
         video.play();
@@ -34,8 +32,3 @@ void CloseupModule::update() {
 bool CloseupModule::isDone() {
     return video.getIsMovieDone();
 };
-
-void CloseupModule::setWidthHeight(){
-    w = assets->getWidth();
-    h = assets->getHeight();
-}

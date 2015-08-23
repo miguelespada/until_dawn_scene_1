@@ -15,7 +15,7 @@ public:
     void next();
     void end();
     
-    Body body;
+    Body *body;
 };
 
 #endif

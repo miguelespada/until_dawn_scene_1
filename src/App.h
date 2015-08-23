@@ -4,6 +4,7 @@
 #include "ofMain.h"
 #include "State.h"
 #include "CloseupModule.h"
+#include "ofxJSON.h"
 
 class App
 {
@@ -29,6 +30,9 @@ public:
     int getCurrentModule();
     void incCurrentModule();
     int moduleIndex;
+    
+    
+    ofxJSONElement data;
 };
 
 #endif

@@ -17,6 +17,7 @@ App::App(){
     ofAddListener(ofEvents().keyPressed, this, &App::keyPressed);
     ofAddListener(ofEvents().update, this, &App::update);
     moduleIndex = 0;
+    data.open("http://192.168.1.42:3000/last.json");
 }
 
 void App::setCurrentState(State *s){
@@ -47,12 +48,11 @@ void App::update(){
     current_state->update();
     ofSendMessage("[Info] " + current_state->toString());
     
-    if(ofGetFrameNum() % 30 == 0){
-        ofxJSONElement response;
-        response.open("http://localhost:3000/last.json");
-        bMale = response["male"].asBool();
+    if(ofGetFrameNum() % 15 == 0){
+        data.open("http://192.168.1.42:3000/last.json");
+        bMale = data["male"].asBool();
         
-        if(response["active"].asBool())
+        if(data["active"].asBool())
             current_state->init();
         else
             current_state->end();
@@ -61,8 +61,6 @@ void App::update(){
 
 void App::update(ofEventArgs &args){
     update();
-    
-
 }
 
 

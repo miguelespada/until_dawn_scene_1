@@ -12,6 +12,8 @@
 #include "ofMain.h"
 #include "assets.h"
 #include "table.h"
+#include "App.h"
+
 
 class Body
 {
@@ -20,8 +22,10 @@ class Body
     float icon_alpha;
     Table table;
     
+    App *app;
+    
 public:
-    Body();
+    Body(App *a);
     void draw();
     void update();
     void setMale(bool s);
