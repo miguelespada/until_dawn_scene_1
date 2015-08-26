@@ -16,7 +16,7 @@ class Galvanic : public CloseupModule
 {
 public:
     Galvanic();
-    void draw();
+    void draw(ofxJSONElement user);
     void update();
 };
 

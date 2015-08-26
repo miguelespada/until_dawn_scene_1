@@ -12,7 +12,7 @@
 Optical::Optical(){
     
     CloseupModule::init();
-    video = Assets::getInstance()->closeups[0];
+    video = Assets::getInstance()->closeups[3];
     initMovie();
 }
 
@@ -21,6 +21,28 @@ void Optical::update(){
     CloseupModule::update();
 }
 
-void Optical::draw(){
+void Optical::draw(ofxJSONElement user){
+    
+    Assets *assets = Assets::getInstance();
     drawMovie();
+    
+    
+    ofSetColor(assets->blue);
+    Assets::getInstance()->rejilla.draw(0, -400);
+    ofSetColor(255);
+    
+    
+    ofPushMatrix();
+    
+    
+    assets->wireframe_galvanic.draw(0, 0);
+    ofTrueTypeFont *font = assets->getFont(26);
+    
+    int value = user["flow"][user["flow"].size() - 1].asFloat();
+    string msg = ofToString(value*100) + " mm/s";
+    
+    font->drawStringAsShapes(msg, 962 - font->stringWidth(msg) , 568 + font->stringHeight(msg) * 1.5);
+    
+    
+    ofPopMatrix();
 }

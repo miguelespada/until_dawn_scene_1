@@ -24,9 +24,10 @@ public:
     virtual std::string toString() {};
     virtual void draw() {};
     virtual void update() {};
-    virtual void push() {};
-    virtual void end() {};
-    virtual void init() {};
+    virtual void standby();
+    virtual void index();
+    virtual void calculandoIndex();
+    virtual void clear() {};
 };
 
 

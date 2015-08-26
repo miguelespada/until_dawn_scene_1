@@ -16,7 +16,7 @@ class Optical : public CloseupModule
 {
 public:
     Optical();
-    void draw();
+    void draw(ofxJSONElement user);
     void update();
 };
 

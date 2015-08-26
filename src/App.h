@@ -5,12 +5,16 @@
 #include "State.h"
 #include "CloseupModule.h"
 #include "ofxJSON.h"
+#include "ofxOsc.h"
 
 class App
 {
     
 public:
-    App();    
+    App();
+    
+    ofxOscReceiver *receiver;
+
     class State *current_state;
     
     void setCurrentState(State *s);
@@ -33,6 +37,10 @@ public:
     
     
     ofxJSONElement data;
+    
+    bool bSave;
+    void save();
+    string dir;
 };
 
 #endif

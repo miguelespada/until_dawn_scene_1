@@ -18,11 +18,12 @@ class ofApp : public ofBaseApp{
     
         Assets *assets;
     
-        bool keyIsDown[255];
-    
         bool bRotated = true;
         void setRotation();
     
         App app;
+    
+        void setFullScreen(bool bFull);
+    
 
     };

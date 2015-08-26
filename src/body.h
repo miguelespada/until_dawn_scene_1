@@ -26,6 +26,7 @@ class Body
     
 public:
     Body(App *a);
+    ~Body();
     void draw();
     void update();
     void setMale(bool s);

@@ -26,6 +26,8 @@ public:
     ofVideoPlayer female_loop;
     ofVideoPlayer glitches[5];
     ofVideoPlayer closeups[5];
+    ofVideoPlayer indices[5];
+    ofVideoPlayer calculando;
     
     ofImage lineas;
     ofImage logos;
@@ -36,9 +38,16 @@ public:
     ofImage icon_hand;
     ofImage icon_termal;
     ofImage icon_user;
+    ofImage rejilla;
     
     
     ofImage wireframe_heart;
+    ofImage wireframe_pressure;
+    ofImage wireframe_temperature;
+    ofImage wireframe_optical;
+    ofImage wireframe_galvanic;
+    
+    ofImage tabla;
     
     
     ofColor red = ofColor(231, 57, 51);

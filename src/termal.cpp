@@ -12,7 +12,7 @@
 Termal::Termal(){
     
     CloseupModule::init();
-    video = Assets::getInstance()->closeups[2];
+    video = Assets::getInstance()->closeups[4];
     initMovie();
 }
 
@@ -21,6 +21,27 @@ void Termal::update(){
     CloseupModule::update();
 }
 
-void Termal::draw(){
+void Termal::draw(ofxJSONElement user){
+    
+    Assets *assets = Assets::getInstance();
     drawMovie();
+    
+    
+    ofSetColor(assets->green);
+    Assets::getInstance()->rejilla.draw(0, -400);
+    ofSetColor(255);
+    
+    
+    ofPushMatrix();
+    
+    
+    assets->wireframe_temperature.draw(0, 0);
+    ofTrueTypeFont *font = assets->getFont(26);
+    string msg;
+    
+    int value = user["thermal"][user["thermal"].size() - 1].asFloat();
+    msg = ofToString(value) + " HUE";
+    font->drawStringAsShapes(msg, 276 - font->stringWidth(msg) , 393 + font->stringHeight(msg) * 1.5);
+    
+    ofPopMatrix();
 }

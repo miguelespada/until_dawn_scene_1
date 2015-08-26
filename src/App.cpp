@@ -10,14 +10,21 @@
 #include "heart.h"
 #include "optical.h"
 #include "ofxJSON.h"
+#include "standby.h"
+#include "index.h"
+#include "calculandoIndex.h"
 
 
 App::App(){
     // Register events and actions
     ofAddListener(ofEvents().keyPressed, this, &App::keyPressed);
     ofAddListener(ofEvents().update, this, &App::update);
-    moduleIndex = 0;
     data.open("http://192.168.1.42:3000/last.json");
+    
+    receiver = new ofxOscReceiver;
+    receiver->setup(12341);
+    
+    moduleIndex = 0;
 }
 
 void App::setCurrentState(State *s){
@@ -51,11 +58,36 @@ void App::update(){
     if(ofGetFrameNum() % 15 == 0){
         data.open("http://192.168.1.42:3000/last.json");
         bMale = data["male"].asBool();
+    }
+    
+    while(receiver->hasWaitingMessages()){
+        ofxOscMessage m;
         
-        if(data["active"].asBool())
-            current_state->init();
-        else
-            current_state->end();
+        receiver->getNextMessage(&m);
+        
+        if(m.getAddress() == "/standby"){
+            current_state->clear();
+            setCurrentState(new Standby(this));
+        }
+        
+        if(m.getAddress() == "/next"){
+            current_state->next();
+        }
+        
+        if(m.getAddress() == "/index"){
+            current_state->clear();
+            setCurrentState(new Index(this));
+        }
+        
+        if(m.getAddress() == "/calculandoIndex"){
+            current_state->clear();
+            setCurrentState(new calculandoIndex(this));
+        }
+        
+        if(m.getAddress() == "/save"){
+            bSave = bool(m.getArgAsInt32(0));
+            save();
+        }
     }
 }
 
@@ -69,9 +101,6 @@ void App::keyPressed (ofKeyEventArgs& eventArgs){
     switch (eventArgs.key) {
         case 'n':
             next();
-            break;
-        case 'c':
-            cancel();
             break;
         default:
             break;
@@ -91,3 +120,13 @@ int App::getCurrentModule(){
 void App::incCurrentModule(){
     moduleIndex = (moduleIndex + 1) % 5;
 }
+
+void App::save(){
+    ofLogNotice() << "Saving ---> " << bSave;
+    dir = "images/" + data["_id"]["$oid"].asString();
+    if(bSave && !ofDirectory::doesDirectoryExist(dir)){
+        ofDirectory::createDirectory(dir, true);
+        ofLogNotice() << "Creating directory: " << dir << endl;
+    }
+}
+

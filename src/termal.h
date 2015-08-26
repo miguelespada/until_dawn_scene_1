@@ -16,7 +16,7 @@ class Termal : public CloseupModule
 {
 public:
     Termal();
-    void draw();
+    void draw(ofxJSONElement user);
     void update();
 };
 

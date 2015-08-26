@@ -2,20 +2,17 @@
 #include "Loop.h"
 #include "Closeup.h"
 #include "standby.h"
-#include "preIndex.h"
+#include "classification.h"
+#include "calculandoIndex.h"
+#include "index.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
     
-//    ofSetWindowPosition(0, 0);
-//    ofToggleFullscreen();
     ofSetFrameRate(12);
     
     assets = Assets::getInstance();
 
-    for(int i = 0; i < 256; i ++)
-        keyIsDown[i] = false;
-    
     bRotated = true;
     setRotation();
     
@@ -46,23 +43,49 @@ void ofApp::draw(){
     
     app.draw();
     ofPopMatrix();
+    
+    if (app.bSave){
+        string filename = app.dir + "/" + ofToString(ofGetTimestampString()) + ".jpg";
+        ofSaveScreen(filename);
+        ofLogNotice() << "Saving... " << filename;
+    }
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     switch (key) {
-            
+                    
         case 'R':
             bRotated = !bRotated;
             setRotation();
             break;
+            
         case 'S':
-            delete app.current_state;
+            app.bSave = !app.bSave;
+            app.save();
+            break;
+            
+            
+            
+        case 'i':
+            app.current_state->clear();
             app.setCurrentState(new Standby(&app));
             break;
-        case 'I':
-            delete app.current_state;
-            app.setCurrentState(new preIndex(&app));
+        case '=':
+            app.current_state->clear();
+            app.setCurrentState(new Index(&app));
+            break;
+        case '0':
+            app.current_state->clear();
+            app.setCurrentState(new calculandoIndex(&app));
+            break;
+            
+            
+        case 'F':
+            setFullScreen(true);
+            break;
+        case 'f':
+            setFullScreen(false);
             break;
         default:
             break;
@@ -72,13 +95,31 @@ void ofApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-    keyIsDown[key] = false;
-
 }
+
 void ofApp::setRotation(){
     
     if(bRotated)
         ofSetWindowShape(HH, WW);
     else
         ofSetWindowShape(WW, HH);
+}
+
+void ofApp::setFullScreen(bool bFull){
+    if(bFull){
+        ofSetFullscreen(true);
+        bRotated = false;
+        setRotation();
+        ofSetWindowShape(1920, 1080);
+        ofSetWindowPosition(1921, 0);
+        ofHideCursor();
+    }
+    else{
+        ofSetWindowPosition(100, 100);
+        ofSetFullscreen(false);
+        bRotated = true;
+        setRotation();
+        ofShowCursor();
+    }
+    
 }

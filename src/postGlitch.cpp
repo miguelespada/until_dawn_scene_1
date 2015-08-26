@@ -35,8 +35,9 @@ void postGlitch::update(){
 }
 
 void postGlitch::next(){
-    app->setCurrentState(new Loop(app));    
     app->incCurrentModule();
-    delete this;
+    app->setCurrentState(new Loop(app));
     
+    delete this;
+
 };

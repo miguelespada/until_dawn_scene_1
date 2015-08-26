@@ -31,6 +31,27 @@ void Assets::load(){
     female_loop.loadMovie(filename);
     ofLogNotice() << "Loading: " << filename;
     
+    filename = "calculando.mov";
+    calculando.loadMovie(filename);
+    ofLogNotice() << "Loading: " << filename;
+    
+    
+    filename = "1_Indiferencia.mov";
+    indices[0].loadMovie(filename);
+    ofLogNotice() << "Loading: " << filename;
+    filename = "2_Inquietud.mov";
+    indices[1].loadMovie(filename);
+    ofLogNotice() << "Loading: " << filename;
+    filename = "3_Miedo.mov";
+    indices[2].loadMovie(filename);
+    ofLogNotice() << "Loading: " << filename;
+    filename = "4_Espanto.mov";
+    indices[3].loadMovie(filename);
+    ofLogNotice() << "Loading: " << filename;
+    filename = "5_Panico.mov";
+    indices[4].loadMovie(filename);
+    ofLogNotice() << "Loading: " << filename;
+    
     for(int i = 0; i < 5; i ++){
         string filename = "glitch_" + ofToString(i) + ".mov";
         glitches[i].loadMovie(filename);
@@ -43,8 +64,14 @@ void Assets::load(){
         ofLogNotice() << "Loading: " << filename ;
     }
     
+    
+    
     filename = "lineas.png";
     lineas.loadImage(filename);
+    ofLogNotice() << "Loading: " << filename;
+    
+    filename = "tabla.png";
+    tabla.loadImage(filename);
     ofLogNotice() << "Loading: " << filename;
     
     filename = "logos.png";
@@ -79,9 +106,34 @@ void Assets::load(){
     icon_user.loadImage(filename);
     ofLogNotice() << "Loading: " << filename;
     
-    
+
     filename = "wireframe_heart.png";
     wireframe_heart.loadImage(filename);
+    ofLogNotice() << "Loading: " << filename;
+    
+    
+    filename = "wireframe_pressure.png";
+    wireframe_pressure.loadImage(filename);
+    ofLogNotice() << "Loading: " << filename;
+    
+    
+    filename = "wireframe_temperature.png";
+    wireframe_temperature.loadImage(filename);
+    ofLogNotice() << "Loading: " << filename;
+    
+    
+    filename = "wireframe_galvanic.png";
+    wireframe_galvanic.loadImage(filename);
+    ofLogNotice() << "Loading: " << filename;
+    
+    
+    filename = "wireframe_optical.png";
+    wireframe_optical.loadImage(filename);
+    ofLogNotice() << "Loading: " << filename;
+    
+    
+    filename = "rejilla.png";
+    rejilla.loadImage(filename);
     ofLogNotice() << "Loading: " << filename;
     
     for(int i = 0; i < 64; i++)

@@ -17,7 +17,9 @@ class postGlitch: public State
     
 public:
     postGlitch(App *g);
-    ~postGlitch(){};
+    ~postGlitch(){
+        video.stop();
+    };
     std::string toString() { return "postGlitch"; }
     void update();
     void draw();

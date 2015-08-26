@@ -14,6 +14,10 @@ Body::Body(App *a){
     app = a;
 }
 
+Body::~Body(){
+    video.stop();
+}
+
 void Body::update(){
     if(!video.isPlaying())
         video.play();
@@ -25,10 +29,14 @@ void Body::draw(){
     
     if(video.isLoaded())
         video.draw(0, 0);
+    assets->rejilla.draw(0, -400);
     
     drawIcons(1080, 1920);
     
     table.drawTable();
+    
+    
+    table.drawUserStress(app->data);
     
     assets->logos.draw(0, 0);
     assets->lineas.draw(0, 0);

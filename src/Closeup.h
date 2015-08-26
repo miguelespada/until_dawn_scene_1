@@ -11,20 +11,37 @@
 
 #include <State.h>
 #include <Closeup.h>
-#include <CloseupModule.h>
+#include <heart.h>
+#include <galvanic.h>
+#include <termal.h>
+#include <optical.h>
+#include <pressure.h>
+#include "ofxJSON.h"
+#include "table.h"
+
 
 class Closeup: public State
 {
+    Table table;
     
 public:
     Closeup(App *g);
-    ~Closeup(){};
+    ~Closeup(){
+        
+    };
     std::string toString() { return "Closeup"; }
     void update();
     void draw();
     void next();
+    void clear();
     
-    CloseupModule *closeup;
+    Heart *heart = NULL;
+    Galvanic *galvanic = NULL;
+    Optical *optical = NULL ;
+    Termal *termal= NULL;
+    Pressure *pressure = NULL;
+    
+    ofxJSONElement user;
 };
 
 

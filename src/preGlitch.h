@@ -17,12 +17,13 @@ class preGlitch: public State
     
 public:
     preGlitch(App *g);
-    ~preGlitch(){};
+    ~preGlitch(){
+        video.stop();
+    };
     std::string toString() { return "preGlitch"; }
     void update();
     void draw();
     void next();
-    
     
 };
 

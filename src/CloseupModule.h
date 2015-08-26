@@ -10,21 +10,27 @@
 #define until_dawn_screen_1_CloseupModule_h
 
 #include "assets.h"
+#include "ofxJSON.h"
 
 class CloseupModule
 {
-    
+ 
 protected:
     ofVideoPlayer video;
     Assets *assets;
     
 public:
-    virtual void draw() {};
+    virtual ~CloseupModule(){
+        video.stop();
+    }
+    virtual void draw(ofxJSONElement user)=0;
+   
     void init();
     void drawMovie();
     void initMovie();
     void update();
-    bool isDone();
+    void clear();
+    
 };
 
 

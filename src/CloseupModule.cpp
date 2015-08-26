@@ -18,17 +18,17 @@ void CloseupModule::drawMovie(){
 }
 
 void CloseupModule::initMovie(){
-    video.setLoopState(OF_LOOP_NONE);
+    video.setPosition(0);
+    video.play();
 }
 
 void CloseupModule::update() {
-    
-    if(!video.isPlaying())
-        video.play();
-    
-    video.update();
+    if(video.isLoaded())
+        video.update();
 };
 
-bool CloseupModule::isDone() {
-    return video.getIsMovieDone();
+
+void CloseupModule::clear(){
+    video.stop();
+    cout << " HEAATT" << endl;
 };

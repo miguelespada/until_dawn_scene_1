@@ -12,7 +12,7 @@
 Galvanic::Galvanic(){
     
     CloseupModule::init();
-    video = Assets::getInstance()->closeups[4];
+    video = Assets::getInstance()->closeups[2];
     initMovie();
 }
 
@@ -21,6 +21,28 @@ void Galvanic::update(){
     CloseupModule::update();
 }
 
-void Galvanic::draw(){
+void Galvanic::draw(ofxJSONElement user){
+    
+    Assets *assets = Assets::getInstance();
     drawMovie();
+    
+    
+    ofSetColor(assets->blue);
+    Assets::getInstance()->rejilla.draw(0, -400);
+    ofSetColor(255);
+    
+    
+    ofPushMatrix();
+    
+    
+    assets->wireframe_galvanic.draw(0, 0);
+    ofTrueTypeFont *font = assets->getFont(26);
+    
+    int value = user["galvanicVoltage"][user["galvanicVoltage"].size() - 1].asFloat();
+    string msg = ofToString(value/100) + " V";
+
+    font->drawStringAsShapes(msg, 962 - font->stringWidth(msg) , 568 + font->stringHeight(msg) * 1.5);
+    
+    
+    ofPopMatrix();
 }

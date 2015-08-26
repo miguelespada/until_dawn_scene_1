@@ -10,26 +10,20 @@
 
 Table::Table(){
     assets = Assets::getInstance();
-    
     top.open("http://192.168.1.42:3000/top.json");
 }
 
 void Table::drawTable(){
-    if(ofGetFrameNum() % 30 == 0)
-        top.open("http://192.168.1.42:3000/top.json");
-    
-    
+
     drawTableHeader();
-    drawTableRow(1, 1613);
-    drawTableRow(2, 1672);
-    drawTableRow(3, 1727);
-    drawTableRow(4, 1783);
+    drawTableRow(1, 1613, top[0]);
+    drawTableRow(2, 1672, top[1]);
+    drawTableRow(3, 1727, top[2]);
+    drawTableRow(4, 1783, top[3]);
     
 }
 
 void Table::drawTableHeader(){
-    
- 
     
     ofTrueTypeFont *font = assets->getFont(12);
     
@@ -50,31 +44,31 @@ void Table::drawTableHeader(){
 }
 
 
-void Table::drawTableRow(int r, int y){
+void Table::drawTableRow(int r, int y, ofxJSONElement top){
     ofTrueTypeFont *font = assets->getFont(12);
     
     string msg = ofToString(r);
     font->drawStringAsShapes(msg, 85 , y  + font->stringHeight(msg) / 2);
     
-    msg = top[r - 1]["name"].asString();
+    msg = top["name"].asString();
     
     font->drawStringAsShapes(msg, 164 , y  + font->stringHeight(msg) / 2);
     
     ofPushMatrix();
     ofTranslate(400, y + 7);
     ofScale(0.25, 1);
-    ofxJSONElement stress = top[r - 1]["stress"];
+    ofxJSONElement stress = top["stress"];
     for(int i = 0; i < stress.size(); i++){
         float v = stress[i].asFloat() / 5;
         ofLine(i, 0, i, -v);
     }
     ofPopMatrix();
     
-    msg = top[r - 1]["indice"].asString() + "%";
+    msg = top["indice"].asString() + "%";
     font->drawStringAsShapes(msg, 830 , y  + font->stringHeight(msg) / 2);
     
-    ofSetColor(assets->red);
-    msg = "PÁNICO";
+    ofSetColor(computeIndiceColor(top));
+    msg = computeIndice(top);
     font->drawStringAsShapes(msg, 875 , y  + font->stringHeight(msg) / 2);
     
     ofSetColor(255);
@@ -82,7 +76,7 @@ void Table::drawTableRow(int r, int y){
     
     for(int i = 0; i < 5; i ++){
         
-        if(top[r - 1]["indice"].asInt() >= i * 20)
+        if(top["indice"].asInt() >= i * 20)
             ofSetColor(assets->red);
         else
             ofNoFill();
@@ -99,4 +93,54 @@ void Table::drawTableRow(int r, int y){
     int hh = assets->icon_user.getHeight();
     
     assets->icon_user.draw(142 , y  - hh/2, ww, hh);
+}
+
+string Table::computeIndice(ofxJSONElement top){
+    if(top["indice"].asInt() > 90)
+        return "PANICO";
+    else if (top["indice"].asInt() > 70)
+        return "ESPANTO";
+    else if (top["indice"].asInt() > 50)
+        return "MIEDO";
+    else if (top["indice"].asInt() > 25)
+        return "INQUIETUD";
+    else
+        return "INDIFERENCIA";
+    
+}
+
+ofColor Table::computeIndiceColor(ofxJSONElement top){
+    if(top["indice"].asInt() > 90)
+        return assets->red;
+    else if (top["indice"].asInt() > 70)
+        return assets->orange;
+    else if (top["indice"].asInt() > 50)
+        return assets->yellow;
+    else if (top["indice"].asInt() > 25)
+        return assets->blue;
+    else
+        return assets->green;
+    
+}
+
+void Table::drawUserStress(ofxJSONElement top){
+    
+    ofTrueTypeFont *font = assets->getFont(12);
+    
+    string msg = "STRESS DE " + top["name"].asString();
+    font->drawStringAsShapes(msg, 85 , 1405  + font->stringHeight(msg) / 2);
+    
+    
+    Assets::getInstance()->tabla.draw(0, 150);
+    
+    ofPushMatrix();
+    ofTranslate(90, 1475);
+    ofScale(900./1200, 1);
+    ofxJSONElement stress = top["stress"];
+    for(int i = 0; i < stress.size(); i++){
+        float v = stress[i].asFloat() / 2;
+        ofLine(i, 0, i, -v);
+    }
+    ofPopMatrix();
+    
 }

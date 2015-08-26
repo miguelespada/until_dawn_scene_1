@@ -15,7 +15,7 @@ class Standby: public State
 {
     
 public:
-    Standby(App *g);
+    Standby(App *a);
     ~Standby(){};
     std::string toString() { return "stand by"; }
     void update();

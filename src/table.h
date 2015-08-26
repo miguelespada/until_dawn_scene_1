@@ -24,7 +24,11 @@ public:
     Table();
     void drawTable();
     void drawTableHeader();
-    void drawTableRow(int r, int y);
+    void drawTableRow(int r, int y, ofxJSONElement top);
+    string computeIndice(ofxJSONElement top);
+    void drawUserStress(ofxJSONElement top);
+    
+    ofColor computeIndiceColor(ofxJSONElement top);
 };
 
 #endif /* defined(__until_dawn_screen_1__table__) */

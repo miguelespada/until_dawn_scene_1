@@ -12,10 +12,9 @@ public:
     std::string toString() { return "Loop"; }
     void update();
     void draw();
-    void next();
-    void end();
-    
+    void next();    
     Body *body;
+    void clear();
 };
 
 #endif

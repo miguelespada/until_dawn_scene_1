@@ -16,7 +16,7 @@ class Pressure : public CloseupModule
 {
 public:
     Pressure();
-    void draw();
+    void draw(ofxJSONElement user);
     void update();
 };
 
