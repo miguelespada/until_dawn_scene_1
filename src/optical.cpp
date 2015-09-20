@@ -37,9 +37,11 @@ void Optical::draw(ofxJSONElement user){
     
     assets->wireframe_galvanic.draw(0, 0);
     ofTrueTypeFont *font = assets->getFont(26);
+
     
-    int value = user["flow"][user["flow"].size() - 1].asFloat();
-    string msg = ofToString(value*100) + " mm/s";
+    float value = user["flow"][user["flow"].size() - 1].asFloat();
+    
+    string msg = ofToString(value) + " mm/s";
     
     font->drawStringAsShapes(msg, 962 - font->stringWidth(msg) , 568 + font->stringHeight(msg) * 1.5);
     

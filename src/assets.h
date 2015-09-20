@@ -58,10 +58,13 @@ public:
     
     ofTrueTypeFont		*fonts[64];
     ofTrueTypeFont      *getFont(int size);
+    void stopVideos();
     
 private:
     static Assets* instance;
     Assets();
+    
+
 };
 
 

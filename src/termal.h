@@ -18,6 +18,7 @@ public:
     Termal();
     void draw(ofxJSONElement user);
     void update();
+    int value;
 };
 
 #endif /* defined(__until_dawn_screen_1__heart__) */

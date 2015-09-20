@@ -15,8 +15,8 @@
 class Classification: public State
 {
     FullTable table;
-    
     App *app;
+    int row;
     
 public:
     Classification(App *a);

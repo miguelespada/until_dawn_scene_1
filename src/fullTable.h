@@ -20,8 +20,7 @@ class FullTable
     Table table;
 public:
     FullTable();
-    void drawTable();
-    void drawTableInContext();
+    void drawTable(int n);
     void drawLines();
     ofxJSONElement users;
     ofxJSONElement user;

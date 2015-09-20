@@ -35,10 +35,10 @@ public:
     void next();
     void clear();
     
+    
     Heart *heart = NULL;
     Galvanic *galvanic = NULL;
     Optical *optical = NULL ;
-    Termal *termal= NULL;
     Pressure *pressure = NULL;
     
     ofxJSONElement user;

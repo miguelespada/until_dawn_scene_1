@@ -76,7 +76,7 @@ void App::update(){
         
         if(m.getAddress() == "/index"){
             current_state->clear();
-            setCurrentState(new Index(this));
+            setCurrentState(new Standby(this));
         }
         
         if(m.getAddress() == "/calculandoIndex"){
@@ -110,8 +110,6 @@ void App::keyPressed (ofKeyEventArgs& eventArgs){
 bool App::isMale(){
     return bMale;
 }
-
-
 
 int App::getCurrentModule(){
     return moduleIndex;

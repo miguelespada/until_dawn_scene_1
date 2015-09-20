@@ -14,6 +14,7 @@ Termal::Termal(){
     CloseupModule::init();
     video = Assets::getInstance()->closeups[4];
     initMovie();
+    value = int(ofRandom(0, 360));
 }
 
 
@@ -39,7 +40,7 @@ void Termal::draw(ofxJSONElement user){
     ofTrueTypeFont *font = assets->getFont(26);
     string msg;
     
-    int value = user["thermal"][user["thermal"].size() - 1].asFloat();
+//    int value = user["thermal"][user["thermal"].size() - 1].asFloat();
     msg = ofToString(value) + " HUE";
     font->drawStringAsShapes(msg, 276 - font->stringWidth(msg) , 393 + font->stringHeight(msg) * 1.5);
     

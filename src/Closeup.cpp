@@ -29,7 +29,7 @@ Closeup::Closeup(App *a){
             pressure = new  Pressure();
             break;
         case 2:
-            termal = new Termal();
+            heart = new Heart();
             break;
         case 3:
             galvanic = new  Galvanic();
@@ -55,7 +55,7 @@ void Closeup::draw(){
             pressure->draw(user);
             break;
         case 2:
-            termal->draw(user);
+            heart->draw(user);
             break;
         case 3:
             galvanic->draw(user);
@@ -89,7 +89,7 @@ void Closeup::update(){
             pressure->update();
             break;
         case 2:
-            termal->update();
+            heart->update();
             break;
         case 3:
             galvanic->update();
@@ -128,8 +128,8 @@ void Closeup::clear(){
             delete pressure;
             break;
         case 2:
-            termal->clear();
-            delete termal;
+            heart->clear();
+            delete heart;
             break;
         case 3:
             galvanic->clear();

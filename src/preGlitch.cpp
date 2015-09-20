@@ -14,7 +14,7 @@
 preGlitch::preGlitch(App *a){
     app = a;
     ofLogNotice() << "State: " << toString();
-    video = Assets::getInstance()->glitches[int(ofRandom(4))];
+    video = Assets::getInstance()->glitches[int(ofRandom(5))];
     video.play();
     video.setLoopState(OF_LOOP_NONE);
 

@@ -9,12 +9,14 @@
 #include "standby.h"
 #include "App.h"
 #include "Assets.h"
-#include "contextClassification.h"
+#include "Classification.h"
 
 Standby::Standby(App *a){
     
     app = a;
     ofLogNotice() << "State: " << toString();
+    
+    Assets::getInstance()->stopVideos();
 };
 
 void Standby::draw(){
@@ -27,6 +29,6 @@ void Standby::update(){
 
 
 void Standby::next(){
-    app->setCurrentState(new contextClassification(app));
+    app->setCurrentState(new Classification(app));
     delete this;
 };

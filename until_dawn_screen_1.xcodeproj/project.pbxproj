@@ -25,7 +25,6 @@
 		4970F11E1B8B1B5B00AEE600 /* index.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4970F11B1B8B1B5B00AEE600 /* index.cpp */; };
 		49C85E4A1B8C407A00C123EF /* classification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49C85E481B8C407A00C123EF /* classification.cpp */; };
 		49C85E4D1B8C422700C123EF /* fullTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49C85E4B1B8C422700C123EF /* fullTable.cpp */; };
-		49C85E501B8C4DA400C123EF /* contextClassification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49C85E4E1B8C4DA400C123EF /* contextClassification.cpp */; };
 		4ADB88E2FB52E76A471065DE /* ofxOscParameterSync.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0AED834CE4DEC5260AF302A2 /* ofxOscParameterSync.cpp */; };
 		510CAFE035E576A4E1502D52 /* UdpSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E6DEF695B88BA5FAACEAA937 /* UdpSocket.cpp */; };
 		5864AD82E20F15536D054EA3 /* ofxOscMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF49D76C45D5DB505A234880 /* ofxOscMessage.cpp */; };
@@ -159,8 +158,6 @@
 		49C85E491B8C407A00C123EF /* classification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = classification.h; sourceTree = "<group>"; };
 		49C85E4B1B8C422700C123EF /* fullTable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fullTable.cpp; sourceTree = "<group>"; };
 		49C85E4C1B8C422700C123EF /* fullTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fullTable.h; sourceTree = "<group>"; };
-		49C85E4E1B8C4DA400C123EF /* contextClassification.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = contextClassification.cpp; sourceTree = "<group>"; };
-		49C85E4F1B8C4DA400C123EF /* contextClassification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = contextClassification.h; sourceTree = "<group>"; };
 		4B948DEC4411B26F3C9BE5DE /* assets.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = assets.cpp; path = src/assets.cpp; sourceTree = SOURCE_ROOT; };
 		4C0E055E4176057631087AA3 /* ofxEasingQuart.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxEasingQuart.h; path = ../../../addons/ofxTween/src/Easings/ofxEasingQuart.h; sourceTree = SOURCE_ROOT; };
 		4CF63BD9DC7A7FB07E00B83B /* Closeup.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Closeup.h; path = src/Closeup.h; sourceTree = SOURCE_ROOT; };
@@ -375,8 +372,6 @@
 				C99292ABCF07F09DA13E3E30 /* preGlitch.h */,
 				4970F1171B8B1AE500AEE600 /* State.cpp */,
 				1760D8CD1211521ADE798382 /* State.h */,
-				49C85E4E1B8C4DA400C123EF /* contextClassification.cpp */,
-				49C85E4F1B8C4DA400C123EF /* contextClassification.h */,
 				49C85E481B8C407A00C123EF /* classification.cpp */,
 				49C85E491B8C407A00C123EF /* classification.h */,
 			);
@@ -822,7 +817,6 @@
 				9D44DC88EF9E7991B4A09951 /* tinyxmlerror.cpp in Sources */,
 				5A4349E9754D6FA14C0F2A3A /* tinyxmlparser.cpp in Sources */,
 				BEDFEE7400C58EA4E412B757 /* ofxJSONElement.cpp in Sources */,
-				49C85E501B8C4DA400C123EF /* contextClassification.cpp in Sources */,
 				FB84AAF8D1B7A95266DB5C09 /* jsoncpp.cpp in Sources */,
 				168C43F69AF6A8042EA0B13F /* easing_terms_of_use.html in Sources */,
 				9266028E1AECBB027ABF64D8 /* ofxEasing.cpp in Sources */,

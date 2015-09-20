@@ -7,7 +7,6 @@
 //
 
 #include "classification.h"
-#include "contextClassification.h"
 
 #include "App.h"
 #include "Assets.h"
@@ -17,14 +16,13 @@ Classification::Classification(App *a){
     app = a;
     ofLogNotice() << "State: " << toString();
     timer = ofGetElapsedTimef();
+    row = 0;
 };
 
 void Classification::draw(){
     Assets *assets = Assets::getInstance();
     
-    
-    table.drawTable();
-    
+    table.drawTable(row);
     table.drawLines();
     
     assets->logos.draw(0, 0);
@@ -33,14 +31,13 @@ void Classification::draw(){
 };
 
 void Classification::update(){
-    if( ofGetElapsedTimef() > timer + 2){
-        app->setCurrentState(new contextClassification(app));
-        delete this;
+    if( ofGetElapsedTimef() > timer + 8){
+        row ++;
+        timer = ofGetElapsedTimef();
     }
 }
 
 void Classification::next(){
-    
     app->setCurrentState(new Loop(app));
     delete this;
 };

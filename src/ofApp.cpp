@@ -73,13 +73,12 @@ void ofApp::keyPressed(int key){
             break;
         case '=':
             app.current_state->clear();
-            app.setCurrentState(new Index(&app));
+            app.setCurrentState(new Standby(&app));
             break;
         case '0':
             app.current_state->clear();
             app.setCurrentState(new calculandoIndex(&app));
             break;
-            
             
         case 'F':
             setFullScreen(true);
