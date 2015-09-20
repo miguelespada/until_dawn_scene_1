@@ -11,11 +11,9 @@
 
 #include <State.h>
 #include <Closeup.h>
-#include <heart.h>
-#include <galvanic.h>
-#include <termal.h>
-#include <optical.h>
-#include <pressure.h>
+#include <CloseupModule.h>
+
+
 #include "ofxJSON.h"
 #include "table.h"
 
@@ -36,10 +34,8 @@ public:
     void clear();
     
     
-    Heart *heart = NULL;
-    Galvanic *galvanic = NULL;
-    Optical *optical = NULL ;
-    Pressure *pressure = NULL;
+    
+    CloseupModule *closeup;
     
     ofxJSONElement user;
 };

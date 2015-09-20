@@ -23,22 +23,21 @@ Closeup::Closeup(App *a){
     
     switch (app->getCurrentModule()) {
         case 0:
-            heart = new Heart();
+            closeup = new Heart();
             break;
         case 1:
-            pressure = new  Pressure();
+            closeup = new Optical();
             break;
         case 2:
-            heart = new Heart();
+            closeup = new Termal();
             break;
         case 3:
-            galvanic = new  Galvanic();
+            closeup = new Galvanic();
             break;
         case 4:
-            optical = new  Optical();
+            closeup = new Pressure();
             break;
         default:
-            heart = new Heart();
             break;
     }
     
@@ -47,27 +46,8 @@ Closeup::Closeup(App *a){
 
 void Closeup::draw(){
     Assets *assets = Assets::getInstance();
-    switch (app->getCurrentModule()) {
-        case 0:
-            heart->draw(user);
-            break;
-        case 1:
-            pressure->draw(user);
-            break;
-        case 2:
-            heart->draw(user);
-            break;
-        case 3:
-            galvanic->draw(user);
-            break;
-        case 4:
-            optical->draw(user);
-            break;
-        default:
-            heart->draw(user);
-            break;
-    }
     
+    closeup->draw(user);
     
     table.drawTable();
     
@@ -80,37 +60,15 @@ void Closeup::draw(){
 
 void Closeup::update(){
     
-    
-    switch (app->getCurrentModule()) {
-        case 0:
-            heart->update();
-            break;
-        case 1:
-            pressure->update();
-            break;
-        case 2:
-            heart->update();
-            break;
-        case 3:
-            galvanic->update();
-            break;
-        case 4:
-            optical->update();
-            break;
-        default:
-            heart->update();
-            break;
-    }
+    closeup->update();
     
     user = app->data;
     if( ofGetElapsedTimef() > timer + 5)
         next();
-    
-    
+
 }
 
 void Closeup::next(){
-    cout << "next-" << endl;
     clear();
     
     app->setCurrentState(new postGlitch(app));
@@ -118,31 +76,6 @@ void Closeup::next(){
 };
 
 void Closeup::clear(){
-    switch (app->getCurrentModule()) {
-        case 0:
-            heart->clear();
-            delete heart;
-            break;
-        case 1:
-            pressure->clear();
-            delete pressure;
-            break;
-        case 2:
-            heart->clear();
-            delete heart;
-            break;
-        case 3:
-            galvanic->clear();
-            delete galvanic;
-            break;
-        case 4:
-            optical->clear();
-            delete optical;
-            break;
-        default:
-            heart->clear();
-            delete heart;
-            break;
-    }
+    closeup->clear();
 
 };

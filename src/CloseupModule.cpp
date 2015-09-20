@@ -30,5 +30,4 @@ void CloseupModule::update() {
 
 void CloseupModule::clear(){
     video.stop();
-    cout << " HEAATT" << endl;
 };
