@@ -23,7 +23,7 @@ public:
     void drawTable(int n);
     void drawLines();
     ofxJSONElement users;
-    ofxJSONElement user;
+    ofxJSONElement lastClassified;
 };
 
 #endif /* defined(__until_dawn_screen_1__fullTable__) */

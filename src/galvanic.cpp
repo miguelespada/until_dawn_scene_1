@@ -39,7 +39,7 @@ void Galvanic::draw(ofxJSONElement user){
     ofTrueTypeFont *font = assets->getFont(26);
     
     int value = user["galvanicVoltage"][user["galvanicVoltage"].size() - 1].asFloat();
-    string msg = ofToString(value/100) + " V";
+    string msg = ofToString(value) + "S/m";
 
     font->drawStringAsShapes(msg, 962 - font->stringWidth(msg) , 568 + font->stringHeight(msg) * 1.5);
     

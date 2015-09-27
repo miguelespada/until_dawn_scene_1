@@ -21,7 +21,9 @@ Closeup::Closeup(App *a){
     app = a;
     ofLogNotice() << "State: " << toString();
     
+ //   switch (2) {
     switch (app->getCurrentModule()) {
+
         case 0:
             closeup = new Heart();
             break;

@@ -63,20 +63,21 @@ void Body::drawIcons(int w, int h){
     
     
     value = app->data["galvanicVoltage"][app->data["galvanicVoltage"].size() - 1].asFloat();
-    msg = ofToString(value/100) + " V";
+    msg = ofToString(value) + "(%) S/m";
     
     
     drawIcon(2, "CONDUCTIVIDAD GALVÁNICA", msg, assets->icon_hand, assets->blue, icon_alpha + angle * 2, w/3.4);
     
     
     value = app->data["stress"][app->data["stress"].size() - 1].asFloat();
-    msg = ofToString(value) + " %";
+    msg = ofToString(int(value)) + " %";
     
     
     drawIcon(3, "STRESS", msg, assets->icon_pressure, assets->yellow, icon_alpha + angle * 3, w/3.4);
     
+    
     value = app->data["flow"][app->data["flow"].size() - 1].asFloat();
-    msg = ofToString(value*100) + " mm/s";
+    msg = ofToString(value * 100) + " mm/s";
     
     drawIcon(4, "OPTICAL FLOW", msg, assets->icon_optical, assets->green, icon_alpha + angle * 4, w/3.4);
     

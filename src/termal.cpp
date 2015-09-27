@@ -40,9 +40,9 @@ void Termal::draw(ofxJSONElement user){
     ofTrueTypeFont *font = assets->getFont(26);
     string msg;
     
-//    int value = user["thermal"][user["thermal"].size() - 1].asFloat();
-    msg = ofToString(value) + " HUE";
-    font->drawStringAsShapes(msg, 276 - font->stringWidth(msg) , 393 + font->stringHeight(msg) * 1.5);
+    float value = user["thermal"][user["thermal"].size() - 1].asFloat();
+    msg = ofToString(int(value * 100)) + "% THERMAL VARIANCE";
+    font->drawStringAsShapes(msg, 100, 393 + font->stringHeight(msg) * 1.5);
     
     ofPopMatrix();
 }
