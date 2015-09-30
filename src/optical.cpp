@@ -39,7 +39,7 @@ void Optical::draw(ofxJSONElement user){
     ofTrueTypeFont *font = assets->getFont(26);
 
     
-    float value = user["flow"][user["flow"].size() - 1].asFloat();
+    float value = user["flow"][user["flow"].size() - 1].asFloat() * 100;
     
     string msg = ofToString(value) + " mm/s";
     

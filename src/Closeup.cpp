@@ -21,7 +21,7 @@ Closeup::Closeup(App *a){
     app = a;
     ofLogNotice() << "State: " << toString();
     
- //   switch (2) {
+//    switch (1) {
     switch (app->getCurrentModule()) {
 
         case 0:
